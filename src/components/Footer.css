@@ -1,0 +1,212 @@
+/* Footer Styles - Level Up Gamer */
+
+.footer {
+  background: linear-gradient(180deg, var(--cyber-black) 0%, var(--dark-purple) 100%);
+  border-top: 2px solid var(--neon-green);
+  color: var(--gray-200);
+  margin-top: var(--spacing-3xl);
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--spacing-3xl) var(--spacing-lg) var(--spacing-xl);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.footer-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.title-main {
+  color: var(--white);
+  text-shadow: var(--shadow-neon);
+}
+
+.title-accent {
+  color: var(--neon-green);
+  font-size: var(--text-xl);
+}
+
+.footer-description {
+  color: var(--gray-400);
+  line-height: 1.6;
+  font-size: var(--text-sm);
+  margin: 0;
+}
+
+.footer-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--electric-blue);
+  margin: 0 0 var(--spacing-md) 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.footer-links li a {
+  color: var(--gray-300);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  transition: all var(--transition-base);
+  display: inline-block;
+  position: relative;
+  padding-left: var(--spacing-sm);
+}
+
+.footer-links li a::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--neon-green);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.footer-links li a:hover {
+  color: var(--neon-green);
+  padding-left: var(--spacing-md);
+}
+
+.footer-links li a:hover::before {
+  opacity: 1;
+}
+
+.social-links {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-800);
+  border: 2px solid var(--gray-700);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  transform: translateY(-4px) scale(1.1);
+  border-color: var(--neon-green);
+  box-shadow: var(--shadow-neon);
+  background: var(--gray-700);
+}
+
+.social-icon {
+  font-size: var(--text-xl);
+  filter: grayscale(0.5);
+  transition: filter var(--transition-base);
+}
+
+.social-links a:hover .social-icon {
+  filter: grayscale(0);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--gray-800);
+  padding-top: var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.copyright {
+  color: var(--gray-500);
+  font-size: var(--text-sm);
+  margin: 0;
+}
+
+.made-with {
+  color: var(--gray-500);
+  font-size: var(--text-sm);
+  margin: 0;
+  font-family: var(--font-primary);
+}
+
+.heart {
+  color: var(--neon-green);
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  10%, 30% {
+    transform: scale(1.1);
+  }
+  20%, 40% {
+    transform: scale(1);
+  }
+}
+
+/* LG-003: Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-title {
+    font-size: var(--text-xl);
+  }
+
+  .title-accent {
+    font-size: var(--text-lg);
+  }
+
+  .social-links a {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-icon {
+    font-size: var(--text-lg);
+  }
+}

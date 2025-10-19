@@ -1,0 +1,47 @@
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import './Navbar.css';
+
+function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <nav className="navbar">
+      <div className="navbar-container">
+        <Link to="/" className="navbar-logo">
+          <span className="logo-text">LEVEL-UP</span>
+          <span className="logo-accent">GAMER</span>
+        </Link>
+
+        <button 
+          className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
+          <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Inicio</Link></li>
+          <li><Link to="/productos" onClick={() => setIsMenuOpen(false)}>Productos</Link></li>
+          <li><Link to="/ayuda" onClick={() => setIsMenuOpen(false)}>Ayuda</Link></li>
+          <li><Link to="/perfil" onClick={() => setIsMenuOpen(false)}>Mi Perfil</Link></li>
+          <li>
+            <Link to="/carrito" className="cart-btn" onClick={() => setIsMenuOpen(false)}>
+              <span className="cart-icon">🛒</span>
+              <span className="cart-count">0</span>
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+export default Navbar;

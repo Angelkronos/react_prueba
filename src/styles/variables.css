@@ -1,0 +1,95 @@
+/* 🎮 LEVEL-UP GAMER - Variables CSS */
+/* LG-001: Paleta Cyber Gamer */
+
+:root {
+  /* Colores principales */
+  --neon-green: #00ff41;
+  --electric-blue: #00d9ff;
+  --cyber-black: #0a0e27;
+  --dark-purple: #1a0b2e;
+  --hot-pink: #ff006e;
+  --cyber-yellow: #ffea00;
+  
+  /* Grises y neutros */
+  --gray-900: #0f1419;
+  --gray-800: #1c1f26;
+  --gray-700: #2a2f3a;
+  --gray-600: #3d4451;
+  --gray-500: #6b7280;
+  --gray-400: #9ca3af;
+  --gray-300: #d1d5db;
+  --gray-200: #e5e7eb;
+  --gray-100: #f3f4f6;
+  --white: #ffffff;
+  
+  /* Colores de estado */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: var(--electric-blue);
+  
+  /* LG-002: Tipografías */
+  --font-primary: 'Roboto', sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+  
+  /* Tamaños de fuente */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-5xl: 3rem;        /* 48px */
+  
+  /* Espaciado */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+  
+  /* Bordes y sombras */
+  --radius-sm: 0.25rem;    /* 4px */
+  --radius-md: 0.5rem;     /* 8px */
+  --radius-lg: 1rem;       /* 16px */
+  --radius-full: 9999px;
+  
+  /* Sombras gamer */
+  --shadow-neon: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+  --shadow-blue: 0 0 10px var(--electric-blue), 0 0 20px var(--electric-blue);
+  --shadow-pink: 0 0 10px var(--hot-pink), 0 0 20px var(--hot-pink);
+  --shadow-elevation: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  
+  /* LG-003: Breakpoints (usados en media queries) */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  
+  /* Transiciones */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+  
+  /* Z-index */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+}
+
+/* LG-003: Focus visible para accesibilidad */
+*:focus-visible {
+  outline: 2px solid var(--neon-green);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}

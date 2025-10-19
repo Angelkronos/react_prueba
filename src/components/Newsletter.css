@@ -1,0 +1,334 @@
+/* Newsletter Styles - LG-019: Newsletter Gamer */
+
+.newsletter {
+  background: linear-gradient(135deg, var(--dark-purple) 0%, var(--cyber-black) 50%, var(--gray-900) 100%);
+  border: 2px solid var(--electric-blue);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  margin: var(--spacing-3xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.newsletter-container {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-3xl);
+  align-items: center;
+}
+
+.newsletter-content {
+  text-align: left;
+}
+
+.newsletter-icon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-md);
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.newsletter-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  margin: 0 0 var(--spacing-md) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.title-main {
+  color: var(--white);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.title-accent {
+  color: var(--electric-blue);
+  text-shadow: var(--shadow-blue);
+  font-size: var(--text-2xl);
+}
+
+.newsletter-description {
+  color: var(--gray-300);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  margin: 0 0 var(--spacing-xl) 0;
+}
+
+.newsletter-form {
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--gray-800);
+  border: 2px solid var(--gray-700);
+  border-radius: var(--radius-md);
+  color: var(--white);
+  font-size: var(--text-base);
+  font-family: var(--font-primary);
+  transition: all var(--transition-base);
+}
+
+.newsletter-input::placeholder {
+  color: var(--gray-500);
+}
+
+.newsletter-input:focus {
+  outline: none;
+  border-color: var(--electric-blue);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+  background: var(--gray-700);
+}
+
+.newsletter-input.error {
+  border-color: var(--error);
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+.newsletter-button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: linear-gradient(135deg, var(--electric-blue), var(--hot-pink));
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--white);
+  font-size: var(--text-base);
+  font-weight: 700;
+  font-family: var(--font-display);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);
+}
+
+.newsletter-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 217, 255, 0.5);
+}
+
+.button-icon {
+  font-size: var(--text-xl);
+  transition: transform var(--transition-base);
+}
+
+.newsletter-button:hover .button-icon {
+  transform: translateX(5px);
+}
+
+.error-message {
+  color: var(--error);
+  font-size: var(--text-sm);
+  margin: var(--spacing-sm) 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.error-message::before {
+  content: '⚠️';
+}
+
+.newsletter-disclaimer {
+  color: var(--gray-500);
+  font-size: var(--text-xs);
+  margin: var(--spacing-md) 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.success-message {
+  padding: var(--spacing-lg);
+  background: rgba(16, 185, 129, 0.1);
+  border: 2px solid var(--success);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  animation: slideInUp 0.5s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success-icon {
+  font-size: var(--text-3xl);
+  color: var(--success);
+  animation: checkmark 0.5s ease-out;
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+.success-text {
+  color: var(--success);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Benefits Section */
+.newsletter-benefits {
+  background: rgba(0, 0, 0, 0.3);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-800);
+}
+
+.benefits-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--neon-green);
+  margin: 0 0 var(--spacing-lg) 0;
+  text-transform: uppercase;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.benefits-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  color: var(--gray-300);
+  font-size: var(--text-sm);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
+}
+
+.benefits-list li:hover {
+  background: rgba(0, 255, 65, 0.05);
+  transform: translateX(5px);
+}
+
+.benefit-icon {
+  font-size: var(--text-2xl);
+  flex-shrink: 0;
+}
+
+/* LG-003: Responsive Design */
+@media (max-width: 1024px) {
+  .newsletter-container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+  }
+
+  .newsletter-content {
+    text-align: center;
+  }
+
+  .form-group {
+    flex-direction: column;
+  }
+
+  .newsletter-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .newsletter {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .newsletter-title {
+    font-size: var(--text-2xl);
+  }
+
+  .title-accent {
+    font-size: var(--text-xl);
+  }
+
+  .newsletter-icon {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .newsletter {
+    border-radius: var(--radius-md);
+  }
+
+  .newsletter-title {
+    font-size: var(--text-xl);
+  }
+
+  .newsletter-description {
+    font-size: var(--text-sm);
+  }
+
+  .benefits-list {
+    gap: var(--spacing-sm);
+  }
+}
