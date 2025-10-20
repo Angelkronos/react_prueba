@@ -1,68 +1,34 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Ayuda from './pages/Ayuda';
+import Productos from './pages/Productos';
+import Carrito from './pages/Carrito';
+import Perfil from './pages/Perfil';
 import './App.css';
 
 function App() {
   return (
     <Router>
-      <div className="app-container">
-        <Navbar />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/ayuda" element={<Ayuda />} />
-            <Route path="/productos" element={<ProductosPlaceholder />} />
-            <Route path="/perfil" element={<PerfilPlaceholder />} />
-            <Route path="/carrito" element={<CarritoPlaceholder />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <CartProvider>
+        <div className="app-container">
+          <Navbar />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/ayuda" element={<Ayuda />} />
+              <Route path="/productos" element={<Productos />} />
+              <Route path="/carrito" element={<Carrito />} />
+              <Route path="/perfil" element={<Perfil />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </CartProvider>
     </Router>
-  );
-}
-
-// Placeholders temporales para rutas futuras
-function ProductosPlaceholder() {
-  return (
-    <div style={{ padding: '4rem 2rem', textAlign: 'center', minHeight: '60vh' }}>
-      <h1 style={{ color: 'var(--neon-green)', fontFamily: 'var(--font-display)' }}>
-        🎮 PRODUCTOS
-      </h1>
-      <p style={{ color: 'var(--gray-400)', fontSize: '1.2rem' }}>
-        Esta página estará disponible próximamente
-      </p>
-    </div>
-  );
-}
-
-function PerfilPlaceholder() {
-  return (
-    <div style={{ padding: '4rem 2rem', textAlign: 'center', minHeight: '60vh' }}>
-      <h1 style={{ color: 'var(--electric-blue)', fontFamily: 'var(--font-display)' }}>
-        👤 MI PERFIL
-      </h1>
-      <p style={{ color: 'var(--gray-400)', fontSize: '1.2rem' }}>
-        Esta página estará disponible próximamente
-      </p>
-    </div>
-  );
-}
-
-function CarritoPlaceholder() {
-  return (
-    <div style={{ padding: '4rem 2rem', textAlign: 'center', minHeight: '60vh' }}>
-      <h1 style={{ color: 'var(--hot-pink)', fontFamily: 'var(--font-display)' }}>
-        🛒 CARRITO
-      </h1>
-      <p style={{ color: 'var(--gray-400)', fontSize: '1.2rem' }}>
-        Esta página estará disponible próximamente
-      </p>
-    </div>
   );
 }
 

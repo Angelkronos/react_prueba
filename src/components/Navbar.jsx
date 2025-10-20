@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useCart } from '../context/CartContext';
 import './Navbar.css';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { getCartItemsCount } = useCart();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -35,7 +37,9 @@ function Navbar() {
           <li>
             <Link to="/carrito" className="cart-btn" onClick={() => setIsMenuOpen(false)}>
               <span className="cart-icon">🛒</span>
-              <span className="cart-count">0</span>
+              {getCartItemsCount() > 0 && (
+                <span className="cart-count">{getCartItemsCount()}</span>
+              )}
             </Link>
           </li>
         </ul>
