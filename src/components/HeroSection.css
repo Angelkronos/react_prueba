@@ -8,13 +8,13 @@
 
 .hero-section {
   position: relative;
-  min-height: 600px;
+  min-height: 550px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: 0;
-  padding-top: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .hero-carousel {
@@ -38,6 +38,7 @@
   background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
+  filter: blur(2px) brightness(0.7);
 }
 
 .hero-slide.active {
@@ -177,7 +178,7 @@
   border-radius: var(--radius-full);
   text-decoration: none;
   font-family: var(--font-display), 'Orbitron', sans-serif;
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -185,6 +186,7 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .hero-btn.primary {

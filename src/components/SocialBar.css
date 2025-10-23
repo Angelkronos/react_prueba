@@ -141,13 +141,13 @@
 }
 
 .social-card:hover {
-  transform: translateY(-8px) scale(1.05);
-  border-color: var(--social-color, var(--neon-green));
+  transform: translateY(-8px) scale(1.03);
+  border-color: var(--social-color);
+  background: var(--social-gradient);
   box-shadow: 
-    0 8px 30px rgba(0, 0, 0, 0.4),
-    0 0 40px var(--social-color, var(--neon-green)),
-    0 0 60px var(--social-color, rgba(57, 255, 20, 0.2));
-  background: linear-gradient(135deg, var(--gray-700) 0%, var(--gray-800) 100%);
+    0 10px 40px rgba(0, 0, 0, 0.5),
+    0 0 40px var(--social-color),
+    inset 0 0 30px rgba(255, 255, 255, 0.1);
 }
 
 .social-card-header {

@@ -1,8 +1,17 @@
-/* Home Page Styles */
+/* Home Page Styles - Optimizado para flujo continuo */
 
 .home-page {
   min-height: 100vh;
   background: var(--cyber-black);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Eliminar espacios entre componentes principales */
+.home-page > section,
+.home-page > div {
+  margin: 0;
 }
 
 /* NOTA: Los estilos del Hero ahora están en /components/HeroSection.css */

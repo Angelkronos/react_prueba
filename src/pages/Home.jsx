@@ -1,10 +1,12 @@
 import Banner from '../components/Banner';
 import HeroSection from '../components/HeroSection';
+import PromoCarousel from '../components/PromoCarousel';
+import FeaturedProducts from '../components/FeaturedProducts';
+import CategoriesGrid from '../components/CategoriesGrid';
 import QuickPanel from '../components/QuickPanel';
 import Newsletter from '../components/Newsletter';
 import SocialBar from '../components/SocialBar';
 import FAQWidget from '../components/FAQWidget';
-import { Link } from 'react-router-dom';
 import './Home.css';
 
 function Home() {
@@ -16,75 +18,14 @@ function Home() {
       {/* Hero Section - Componente independiente con imagen de fondo */}
       <HeroSection />
 
-      {/* LG-013: Carrusel de Promociones - Sección de Destacados */}
-      <section className="promo-carousel">
-        <div className="promo-container">
-          <h2 className="section-title">
-            <span className="title-icon">⭐</span>
-            PROMOCIONES DESTACADAS
-          </h2>
-          <div className="promo-grid">
-            <div className="promo-card promo-large">
-              <div className="promo-badge">-50%</div>
-              <h3 className="promo-title">MEGA SALE GAMER</h3>
-              <p className="promo-description">
-                Descuentos increíbles en los mejores títulos AAA
-              </p>
-              <Link to="/productos?categoria=ofertas" className="promo-link">
-                Ver Ofertas →
-              </Link>
-            </div>
-            <div className="promo-card">
-              <div className="promo-badge">NUEVO</div>
-              <h3 className="promo-title">Últimos Lanzamientos</h3>
-              <p className="promo-description">
-                Los juegos más esperados del año
-              </p>
-              <Link to="/productos?categoria=nuevos" className="promo-link">
-                Explorar →
-              </Link>
-            </div>
-            <div className="promo-card">
-              <div className="promo-badge">HOT</div>
-              <h3 className="promo-title">Accesorios Pro</h3>
-              <p className="promo-description">
-                Mejora tu setup gaming
-              </p>
-              <Link to="/productos?categoria=accesorios" className="promo-link">
-                Comprar →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* LG-013: Carrusel de Promociones con imágenes reales */}
+      <PromoCarousel />
 
-      {/* Categories Quick Access */}
-      <section className="categories-section">
-        <div className="categories-container">
-          <h2 className="section-title">
-            <span className="title-icon">🎯</span>
-            CATEGORÍAS POPULARES
-          </h2>
-          <div className="categories-grid">
-            <Link to="/productos?plataforma=ps5" className="category-card">
-              <span className="category-icon">🎮</span>
-              <h3 className="category-name">PlayStation 5</h3>
-            </Link>
-            <Link to="/productos?plataforma=xbox" className="category-card">
-              <span className="category-icon">🟢</span>
-              <h3 className="category-name">Xbox Series</h3>
-            </Link>
-            <Link to="/productos?plataforma=nintendo" className="category-card">
-              <span className="category-icon">🔴</span>
-              <h3 className="category-name">Nintendo Switch</h3>
-            </Link>
-            <Link to="/productos?plataforma=pc" className="category-card">
-              <span className="category-icon">💻</span>
-              <h3 className="category-name">PC Gaming</h3>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Productos Destacados con imágenes 600x400 */}
+      <FeaturedProducts />
+
+      {/* Categories Quick Access con hover neón */}
+      <CategoriesGrid />
 
       {/* LG-018: Widget de Redes Sociales */}
       <SocialBar />
