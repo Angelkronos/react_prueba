@@ -71,6 +71,38 @@
   overflow: hidden;
 }
 
+/* Gradientes específicos por red social */
+.social-card:nth-child(1) {
+  /* Discord - Morado-Gris */
+  --social-gradient: linear-gradient(135deg, #5865F2 0%, #404EED 50%, #3C45A5 100%);
+}
+
+.social-card:nth-child(2) {
+  /* Twitch - Púrpura intenso */
+  --social-gradient: linear-gradient(135deg, #9146FF 0%, #772CE8 50%, #5A1E9E 100%);
+}
+
+.social-card:nth-child(3) {
+  /* YouTube - Rojo-Negro */
+  --social-gradient: linear-gradient(135deg, #FF0000 0%, #CC0000 50%, #8B0000 100%);
+}
+
+.social-card:nth-child(4) {
+  /* Twitter - Azul-Gris */
+  --social-gradient: linear-gradient(135deg, #1DA1F2 0%, #1A8CD8 50%, #0D7BC2 100%);
+}
+
+.social-card:nth-child(5) {
+  /* Instagram - Fucsia-Naranja */
+  --social-gradient: linear-gradient(135deg, #E4405F 0%, #C13584 50%, #833AB4 100%);
+}
+
+.social-card:nth-child(6) {
+  /* TikTok - Negro-Cyan-Fucsia */
+  --social-gradient: linear-gradient(135deg, #000000 0%, #00F2EA 50%, #FF0050 100%);
+}
+
+/* Borde superior con color de la marca */
 .social-card::before {
   content: '';
   position: absolute;
@@ -78,21 +110,43 @@
   left: 0;
   width: 100%;
   height: 4px;
-  background: var(--social-color, var(--neon-green));
+  background: var(--social-gradient, var(--neon-green));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition-base);
+  z-index: 3;
 }
 
 .social-card:hover::before {
   transform: scaleX(1);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+/* Fondo degradado que aparece al hover */
+.social-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--social-gradient, var(--neon-green));
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  z-index: 0;
+}
+
+.social-card:hover::after {
+  opacity: 0.15;
 }
 
 .social-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) scale(1.05);
   border-color: var(--social-color, var(--neon-green));
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4),
-              0 0 40px var(--social-color, var(--neon-green));
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.4),
+    0 0 40px var(--social-color, var(--neon-green)),
+    0 0 60px var(--social-color, rgba(57, 255, 20, 0.2));
   background: linear-gradient(135deg, var(--gray-700) 0%, var(--gray-800) 100%);
 }
 
@@ -103,14 +157,26 @@
 }
 
 .social-icon {
-  font-size: var(--text-3xl);
+  font-size: 2.5rem;
   filter: grayscale(0.5);
   transition: all var(--transition-base);
+  z-index: 2;
+  position: relative;
 }
 
 .social-card:hover .social-icon {
-  filter: grayscale(0);
-  transform: scale(1.2) rotate(5deg);
+  filter: grayscale(0) drop-shadow(0 0 20px var(--social-color));
+  transform: scale(1.3) rotate(5deg);
+  animation: iconBounce 0.6s ease-in-out;
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: scale(1.3) rotate(5deg);
+  }
+  50% {
+    transform: scale(1.5) rotate(10deg);
+  }
 }
 
 .social-name {
@@ -118,6 +184,14 @@
   font-size: var(--text-lg);
   color: var(--white);
   font-weight: 700;
+  z-index: 2;
+  position: relative;
+  transition: all var(--transition-base);
+}
+
+.social-card:hover .social-name {
+  color: var(--social-color, var(--neon-green));
+  text-shadow: 0 0 15px var(--social-color, var(--neon-green));
 }
 
 .social-card-body {
@@ -125,6 +199,8 @@
   flex-direction: column;
   gap: var(--spacing-xs);
   padding: var(--spacing-md) 0;
+  z-index: 2;
+  position: relative;
 }
 
 .social-followers {
@@ -132,6 +208,13 @@
   font-size: var(--text-2xl);
   color: var(--neon-green);
   font-weight: 700;
+  transition: all var(--transition-base);
+}
+
+.social-card:hover .social-followers {
+  color: var(--social-color, var(--neon-green));
+  text-shadow: 0 0 20px var(--social-color, var(--neon-green));
+  transform: scale(1.1);
 }
 
 .social-label {
@@ -139,6 +222,8 @@
   font-size: var(--text-sm);
   text-transform: uppercase;
   letter-spacing: 1px;
+  z-index: 2;
+  position: relative;
 }
 
 .social-card-footer {
@@ -147,6 +232,8 @@
   justify-content: space-between;
   padding-top: var(--spacing-md);
   border-top: 1px solid var(--gray-700);
+  z-index: 2;
+  position: relative;
 }
 
 .social-cta {

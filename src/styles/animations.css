@@ -1,0 +1,452 @@
+/* 🎮 LEVEL-UP GAMER - Animaciones Globales */
+/* Animaciones reutilizables para efectos gamer profesionales */
+
+/* ===== GLOW & PULSE EFFECTS ===== */
+
+/* Animación de resplandor pulsante (neón verde) */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 10px var(--neon-green),
+      0 0 20px var(--neon-green),
+      0 0 30px var(--neon-green);
+    border-color: var(--neon-green);
+  }
+  50% {
+    box-shadow: 
+      0 0 15px var(--neon-green),
+      0 0 30px var(--neon-green),
+      0 0 45px var(--neon-green),
+      0 0 60px var(--neon-green);
+    border-color: rgba(57, 255, 20, 0.8);
+  }
+}
+
+/* Resplandor pulsante azul */
+@keyframes glowPulseBlue {
+  0%, 100% {
+    box-shadow: 
+      0 0 10px var(--electric-blue),
+      0 0 20px var(--electric-blue),
+      0 0 30px var(--electric-blue);
+    border-color: var(--electric-blue);
+  }
+  50% {
+    box-shadow: 
+      0 0 15px var(--electric-blue),
+      0 0 30px var(--electric-blue),
+      0 0 45px var(--electric-blue),
+      0 0 60px var(--electric-blue);
+    border-color: rgba(30, 144, 255, 0.8);
+  }
+}
+
+/* Resplandor pulsante fucsia */
+@keyframes glowPulsePink {
+  0%, 100% {
+    box-shadow: 
+      0 0 10px var(--hot-pink),
+      0 0 20px var(--hot-pink),
+      0 0 30px var(--hot-pink);
+    border-color: var(--hot-pink);
+  }
+  50% {
+    box-shadow: 
+      0 0 15px var(--hot-pink),
+      0 0 30px var(--hot-pink),
+      0 0 45px var(--hot-pink),
+      0 0 60px var(--hot-pink);
+    border-color: rgba(255, 0, 110, 0.8);
+  }
+}
+
+/* ===== FADE & SLIDE EFFECTS ===== */
+
+/* Aparición suave desde abajo */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aparición suave desde arriba */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aparición suave desde la izquierda */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Aparición suave desde la derecha */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade simple */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== SCALE & ZOOM EFFECTS ===== */
+
+/* Zoom in suave */
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Zoom out suave */
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* Efecto de pulsación suave */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* ===== LIGHT & MOVEMENT EFFECTS ===== */
+
+/* Luces en movimiento (fondo animado) */
+@keyframes moveLights {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Efecto de escaneo horizontal */
+@keyframes scanLine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Efecto de brillo deslizante */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* ===== ROTATION & SPIN EFFECTS ===== */
+
+/* Rotación continua */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Balanceo suave */
+@keyframes swing {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+/* ===== BOUNCE & SHAKE EFFECTS ===== */
+
+/* Rebote suave */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Sacudida */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* ===== NEON TEXT EFFECTS ===== */
+
+/* Parpadeo de neón */
+@keyframes neonFlicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 
+      0 0 10px var(--neon-green),
+      0 0 20px var(--neon-green),
+      0 0 30px var(--neon-green),
+      0 0 40px var(--neon-green);
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.8;
+  }
+}
+
+/* Resplandor de texto pulsante */
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor;
+  }
+  50% {
+    text-shadow: 
+      0 0 15px currentColor,
+      0 0 30px currentColor,
+      0 0 45px currentColor,
+      0 0 60px currentColor;
+  }
+}
+
+/* ===== BORDER EFFECTS ===== */
+
+/* Borde animado que recorre el perímetro */
+@keyframes borderRun {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  25% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  50% {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  }
+  75% {
+    clip-path: polygon(100% 100%, 0 100%, 0 100%, 100% 100%);
+  }
+  100% {
+    clip-path: polygon(0 100%, 0 0, 0 0, 0 100%);
+  }
+}
+
+/* ===== LOADING & PROGRESS EFFECTS ===== */
+
+/* Barra de carga */
+@keyframes loadingBar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Spinner circular */
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== PARTICLE EFFECTS ===== */
+
+/* Flotar hacia arriba (para partículas) */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ===== HOVER ENHANCEMENTS ===== */
+
+/* Elevación al hacer hover */
+@keyframes hoverLift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+/* ===== SLIDE TRANSITIONS ===== */
+
+/* Deslizamiento de entrada de slide */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Deslizamiento de salida de slide */
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* ===== COUNT-UP EFFECT ===== */
+
+/* Animación de contador */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== GRADIENT MOVEMENT ===== */
+
+/* Gradiente animado */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ===== UTILIDADES DE ANIMACIÓN ===== */
+
+/* Clases de utilidad para aplicar animaciones fácilmente */
+.animate-glow {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-glow-blue {
+  animation: glowPulseBlue 2s ease-in-out infinite;
+}
+
+.animate-glow-pink {
+  animation: glowPulsePink 2s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.animate-zoom-in {
+  animation: zoomIn 0.5s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-spin {
+  animation: spin 2s linear infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+/* Delays escalonados */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }

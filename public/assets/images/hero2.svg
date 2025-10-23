@@ -1,0 +1,21 @@
+<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff00a8;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#1a0b2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#39ff14;stop-opacity:0.3" />
+    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg2)"/>
+  <polygon points="300,200 500,200 600,400 400,600 200,400" fill="none" stroke="#ff00a8" stroke-width="3" opacity="0.4" filter="url(#glow2)"/>
+  <polygon points="1300,500 1600,500 1700,800 1500,900 1200,700" fill="none" stroke="#1e90ff" stroke-width="3" opacity="0.4" filter="url(#glow2)"/>
+  <text x="960" y="540" font-family="Orbitron" font-size="120" fill="#ff00a8" text-anchor="middle" opacity="0.15" filter="url(#glow2)">LEVEL UP</text>
+  <g opacity="0.2">
+    <circle cx="800" cy="300" r="100" fill="none" stroke="#39ff14" stroke-width="2"/>
+    <circle cx="1200" cy="700" r="150" fill="none" stroke="#1e90ff" stroke-width="2"/>
+  </g>
+</svg>

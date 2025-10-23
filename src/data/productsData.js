@@ -1,5 +1,7 @@
 // Base de datos de productos Level-Up Gamer
-export const productsData = [
+// Simulación de base de datos local con operaciones CRUD
+
+let productsDatabase = [
   {
     id: 1,
     name: "PlayStation 5 Digital Edition",
@@ -362,27 +364,260 @@ export const productsData = [
   }
 ];
 
+// ================== EXPORTACIÓN DE DATOS ==================
+export const productsData = productsDatabase;
+
+// ================== CATEGORÍAS DISPONIBLES ==================
+export const categories = [
+  { id: 'consolas', name: 'Consolas', icon: '🎮' },
+  { id: 'juegos', name: 'Juegos', icon: '🎯' },
+  { id: 'accesorios', name: 'Accesorios', icon: '🎧' }
+];
+
+// ================== OPERACIONES CRUD ==================
+
+// **CREATE** - Agregar nuevo producto
+export const createProduct = (productData) => {
+  const newProduct = {
+    id: productsDatabase.length > 0 
+      ? Math.max(...productsDatabase.map(p => p.id)) + 1 
+      : 1,
+    ...productData,
+    rating: productData.rating || 0,
+    reviews: productData.reviews || 0,
+    featured: productData.featured || false,
+    isOffer: productData.isOffer || false,
+    discount: productData.discount || 0,
+    stock: productData.stock || 0
+  };
+  
+  productsDatabase.push(newProduct);
+  return newProduct;
+};
+
+// **READ** - Obtener todos los productos
+export const getAllProducts = () => {
+  return [...productsDatabase];
+};
+
+// **READ** - Obtener producto por ID
+export const getProductById = (id) => {
+  return productsDatabase.find(product => product.id === parseInt(id));
+};
+
+// **UPDATE** - Actualizar producto existente
+export const updateProduct = (id, updatedData) => {
+  const index = productsDatabase.findIndex(product => product.id === parseInt(id));
+  
+  if (index === -1) {
+    throw new Error(`Producto con ID ${id} no encontrado`);
+  }
+  
+  productsDatabase[index] = {
+    ...productsDatabase[index],
+    ...updatedData,
+    id: productsDatabase[index].id // Preservar ID original
+  };
+  
+  return productsDatabase[index];
+};
+
+// **DELETE** - Eliminar producto
+export const deleteProduct = (id) => {
+  const index = productsDatabase.findIndex(product => product.id === parseInt(id));
+  
+  if (index === -1) {
+    throw new Error(`Producto con ID ${id} no encontrado`);
+  }
+  
+  const deletedProduct = productsDatabase.splice(index, 1)[0];
+  return deletedProduct;
+};
+
+// **STOCK** - Actualizar stock de producto
+export const updateStock = (id, quantity) => {
+  const product = getProductById(id);
+  
+  if (!product) {
+    throw new Error(`Producto con ID ${id} no encontrado`);
+  }
+  
+  const newStock = product.stock + quantity;
+  
+  if (newStock < 0) {
+    throw new Error('Stock insuficiente');
+  }
+  
+  return updateProduct(id, { stock: newStock });
+};
+
+// **STOCK** - Verificar disponibilidad
+export const checkAvailability = (id, quantity = 1) => {
+  const product = getProductById(id);
+  
+  if (!product) {
+    return { available: false, message: 'Producto no encontrado' };
+  }
+  
+  if (product.stock < quantity) {
+    return { 
+      available: false, 
+      message: `Stock insuficiente. Disponible: ${product.stock}`,
+      stock: product.stock
+    };
+  }
+  
+  return { available: true, stock: product.stock };
+};
+
+// ================== FUNCIONES DE CONSULTA ==================
+
 // Función para obtener productos destacados
 export const getFeaturedProducts = () => {
-  return productsData.filter(product => product.featured);
+  return productsDatabase.filter(product => product.featured);
 };
 
 // Función para obtener ofertas
 export const getOffers = () => {
-  return productsData.filter(product => product.isOffer);
+  return productsDatabase.filter(product => product.isOffer && product.discount > 0)
+    .sort((a, b) => b.discount - a.discount); // Ordenar por descuento
 };
 
 // Función para obtener productos por categoría
 export const getProductsByCategory = (category) => {
-  return productsData.filter(product => product.category === category);
+  return productsDatabase.filter(product => 
+    product.category.toLowerCase() === category.toLowerCase()
+  );
 };
 
 // Función para buscar productos
 export const searchProducts = (query) => {
   const lowerQuery = query.toLowerCase();
-  return productsData.filter(product => 
+  return productsDatabase.filter(product => 
     product.name.toLowerCase().includes(lowerQuery) ||
     product.description.toLowerCase().includes(lowerQuery) ||
+    product.brand.toLowerCase().includes(lowerQuery) ||
     product.tags.some(tag => tag.toLowerCase().includes(lowerQuery))
   );
+};
+
+// **FILTROS AVANZADOS** - Filtrar por múltiples criterios
+export const filterProducts = (filters = {}) => {
+  let results = [...productsDatabase];
+  
+  // Filtrar por categoría
+  if (filters.category) {
+    results = results.filter(p => 
+      p.category.toLowerCase() === filters.category.toLowerCase()
+    );
+  }
+  
+  // Filtrar por marca
+  if (filters.brand) {
+    results = results.filter(p => 
+      p.brand.toLowerCase() === filters.brand.toLowerCase()
+    );
+  }
+  
+  // Filtrar por rango de precio
+  if (filters.minPrice !== undefined) {
+    results = results.filter(p => p.price >= filters.minPrice);
+  }
+  
+  if (filters.maxPrice !== undefined) {
+    results = results.filter(p => p.price <= filters.maxPrice);
+  }
+  
+  // Filtrar solo ofertas
+  if (filters.onlyOffers) {
+    results = results.filter(p => p.isOffer && p.discount > 0);
+  }
+  
+  // Filtrar solo destacados
+  if (filters.onlyFeatured) {
+    results = results.filter(p => p.featured);
+  }
+  
+  // Filtrar por disponibilidad
+  if (filters.inStock) {
+    results = results.filter(p => p.stock > 0);
+  }
+  
+  // Filtrar por rating mínimo
+  if (filters.minRating) {
+    results = results.filter(p => p.rating >= filters.minRating);
+  }
+  
+  // Ordenar resultados
+  if (filters.sortBy) {
+    results = sortProducts(results, filters.sortBy, filters.sortOrder);
+  }
+  
+  return results;
+};
+
+// **ORDENAMIENTO** - Ordenar productos
+export const sortProducts = (products, sortBy = 'name', order = 'asc') => {
+  const sorted = [...products];
+  
+  sorted.sort((a, b) => {
+    let comparison = 0;
+    
+    switch (sortBy) {
+      case 'price':
+        comparison = a.price - b.price;
+        break;
+      case 'name':
+        comparison = a.name.localeCompare(b.name);
+        break;
+      case 'rating':
+        comparison = b.rating - a.rating; // Mayor rating primero por defecto
+        break;
+      case 'discount':
+        comparison = b.discount - a.discount; // Mayor descuento primero
+        break;
+      case 'newest':
+        comparison = b.id - a.id; // Productos más nuevos primero
+        break;
+      default:
+        comparison = 0;
+    }
+    
+    return order === 'desc' ? -comparison : comparison;
+  });
+  
+  return sorted;
+};
+
+// **ESTADÍSTICAS** - Obtener información general
+export const getStatistics = () => {
+  return {
+    totalProducts: productsDatabase.length,
+    totalStock: productsDatabase.reduce((sum, p) => sum + p.stock, 0),
+    productsInStock: productsDatabase.filter(p => p.stock > 0).length,
+    productsOutOfStock: productsDatabase.filter(p => p.stock === 0).length,
+    totalOffers: productsDatabase.filter(p => p.isOffer).length,
+    totalFeatured: productsDatabase.filter(p => p.featured).length,
+    averagePrice: productsDatabase.reduce((sum, p) => sum + p.price, 0) / productsDatabase.length,
+    categoriesCount: {
+      consolas: productsDatabase.filter(p => p.category === 'consolas').length,
+      juegos: productsDatabase.filter(p => p.category === 'juegos').length,
+      accesorios: productsDatabase.filter(p => p.category === 'accesorios').length
+    }
+  };
+};
+
+// **MARCAS** - Obtener todas las marcas únicas
+export const getAllBrands = () => {
+  const brands = [...new Set(productsDatabase.map(p => p.brand))];
+  return brands.sort();
+};
+
+// **PRECIO** - Obtener rango de precios
+export const getPriceRange = () => {
+  const prices = productsDatabase.map(p => p.price);
+  return {
+    min: Math.min(...prices),
+    max: Math.max(...prices)
+  };
 };

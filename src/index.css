@@ -1,6 +1,9 @@
 /* Import Variables - LG-001, LG-002, LG-003 */
 @import './styles/variables.css';
 
+/* Import Animations */
+@import './styles/animations.css';
+
 /* LG-002: Google Fonts - Roboto + Orbitron */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Orbitron:wght@400;500;700;900&display=swap');
 

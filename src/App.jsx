@@ -7,6 +7,11 @@ import Ayuda from './pages/Ayuda';
 import Productos from './pages/Productos';
 import Carrito from './pages/Carrito';
 import Perfil from './pages/Perfil';
+import Categorias from './pages/Categorias';
+import Ofertas from './pages/Ofertas';
+import Checkout from './pages/Checkout';
+import CompraExitosa from './pages/CompraExitosa';
+import CompraFallida from './pages/CompraFallida';
 import './App.css';
 
 function App() {
@@ -22,6 +27,11 @@ function App() {
               <Route path="/productos" element={<Productos />} />
               <Route path="/carrito" element={<Carrito />} />
               <Route path="/perfil" element={<Perfil />} />
+              <Route path="/categorias" element={<Categorias />} />
+              <Route path="/ofertas" element={<Ofertas />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/compra-exitosa" element={<CompraExitosa />} />
+              <Route path="/compra-fallida" element={<CompraFallida />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

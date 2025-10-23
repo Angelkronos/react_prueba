@@ -1,0 +1,62 @@
+/* Compra Fallida */
+.compra-fallida-page {
+  min-height: 100vh;
+  background: var(--cyber-black);
+  padding: var(--spacing-3xl) 0;
+}
+
+.failure-card {
+  background: var(--gray-800);
+  border: 3px solid var(--error);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-3xl);
+  text-align: center;
+  box-shadow: 0 0 40px rgba(239, 68, 68, 0.3);
+}
+
+.failure-icon {
+  font-size: 6rem;
+  animation: shake 0.5s ease-out;
+}
+
+.failure-title {
+  font-family: var(--font-display);
+  color: var(--error);
+  font-size: var(--text-4xl);
+  margin: var(--spacing-lg) 0;
+}
+
+.failure-subtitle {
+  color: var(--gray-300);
+  font-size: var(--text-xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.suggestion-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.suggestion-card {
+  background: var(--gray-700);
+  border: 2px solid var(--gray-600);
+  transition: all var(--transition-base);
+}
+
+.suggestion-card:hover {
+  border-color: var(--electric-blue);
+  transform: translateY(-5px);
+}
+
+.suggestion-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}

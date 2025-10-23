@@ -1,4 +1,5 @@
 import Banner from '../components/Banner';
+import HeroSection from '../components/HeroSection';
 import QuickPanel from '../components/QuickPanel';
 import Newsletter from '../components/Newsletter';
 import SocialBar from '../components/SocialBar';
@@ -12,28 +13,8 @@ function Home() {
       {/* LG-004: Banner Gamer Dinámico */}
       <Banner />
 
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-container">
-          <h1 className="hero-title">
-            BIENVENIDO A <span className="hero-accent">LEVEL-UP GAMER</span>
-          </h1>
-          <p className="hero-subtitle">
-            La mejor tienda de videojuegos y accesorios gaming. 
-            Encuentra los últimos lanzamientos, ofertas exclusivas y mucho más.
-          </p>
-          <div className="hero-actions">
-            <Link to="/productos" className="hero-btn primary">
-              <span>Explorar Catálogo</span>
-              <span className="btn-icon">🎮</span>
-            </Link>
-            <Link to="/productos?categoria=ofertas" className="hero-btn secondary">
-              <span>Ver Ofertas</span>
-              <span className="btn-icon">🔥</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section - Componente independiente con imagen de fondo */}
+      <HeroSection />
 
       {/* LG-013: Carrusel de Promociones - Sección de Destacados */}
       <section className="promo-carousel">

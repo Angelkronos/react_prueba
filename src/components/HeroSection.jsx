@@ -52,7 +52,7 @@ function HeroSection() {
         
         <div className="hero-actions">
           <Link to="/productos" className="hero-btn primary">
-            <span>Explorar Catálogo</span>
+            <span>ANGEL SABELLE PROGRAMO EZTO</span>
             <span className="btn-icon">🎮</span>
           </Link>
           <Link to="/productos?categoria=ofertas" className="hero-btn secondary">
