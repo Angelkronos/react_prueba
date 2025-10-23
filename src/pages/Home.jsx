@@ -3,41 +3,45 @@ import HeroSection from '../components/HeroSection';
 import PromoCarousel from '../components/PromoCarousel';
 import FeaturedProducts from '../components/FeaturedProducts';
 import CategoriesGrid from '../components/CategoriesGrid';
-import QuickPanel from '../components/QuickPanel';
-import Newsletter from '../components/Newsletter';
+import NewsSection from '../components/NewsSection';
 import SocialBar from '../components/SocialBar';
+import Newsletter from '../components/Newsletter';
 import FAQWidget from '../components/FAQWidget';
+import QuickPanel from '../components/QuickPanel';
 import './Home.css';
 
 function Home() {
   return (
     <div className="home-page">
-      {/* LG-004: Banner Gamer Dinámico */}
+      {/* Banner Superior */}
       <Banner />
 
-      {/* Hero Section - Componente independiente con imagen de fondo */}
+      {/* 1. Hero Section - Sin espacios negros */}
       <HeroSection />
 
-      {/* LG-013: Carrusel de Promociones con imágenes reales */}
+      {/* 2. Carrusel de Promociones - 5 slides con imágenes locales */}
       <PromoCarousel />
 
-      {/* Productos Destacados con imágenes 600x400 */}
+      {/* 3. Productos Destacados - 4 productos con ofertas reales */}
       <FeaturedProducts />
 
-      {/* Categories Quick Access con hover neón */}
+      {/* 4. Grid de Categorías - 6 categorías con hover neón */}
       <CategoriesGrid />
 
-      {/* LG-018: Widget de Redes Sociales */}
+      {/* 5. Noticias y Eventos Gaming - 3 cards con fade-in */}
+      <NewsSection />
+
+      {/* 6. Redes Sociales - Instagram, TikTok, YouTube, Discord */}
       <SocialBar />
 
-      {/* LG-019: Newsletter Gamer */}
+      {/* Newsletter */}
       <Newsletter />
 
-      {/* LG-009: FAQ / Centro de Ayuda con LG-015: Buscador Rápido */}
+      {/* FAQ y Panel Flotante */}
       <FAQWidget />
-
-      {/* LG-014: Panel de Acceso Rápido Flotante */}
       <QuickPanel />
+
+      {/* 7. Footer - No modificar, se mantiene del layout principal */}
     </div>
   );
 }

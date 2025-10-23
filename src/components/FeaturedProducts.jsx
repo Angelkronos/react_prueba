@@ -1,63 +1,32 @@
 import { Link } from 'react-router-dom';
+import { getOffers } from '../data/productsData';
 import './FeaturedProducts.css';
 
 function FeaturedProducts() {
-  const featuredProducts = [
-    {
-      id: 1,
-      name: 'PlayStation 5 Digital',
-      price: 549990,
-      originalPrice: 599990,
-      discount: 8,
-      image: 'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&h=400&fit=crop',
-      category: 'Consolas'
-    },
-    {
-      id: 2,
-      name: 'Teclado Mecánico RGB',
-      price: 89990,
-      originalPrice: 129990,
-      discount: 31,
-      image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&h=400&fit=crop',
-      category: 'Periféricos'
-    },
-    {
-      id: 3,
-      name: 'Monitor Gaming 27" 144Hz',
-      price: 299990,
-      originalPrice: 399990,
-      discount: 25,
-      image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&h=400&fit=crop',
-      category: 'Monitores'
-    },
-    {
-      id: 4,
-      name: 'Headset Gamer 7.1',
-      price: 79990,
-      originalPrice: 119990,
+  // Obtener productos en oferta del catálogo real
+  const allOffers = getOffers();
+  const featuredProducts = allOffers.slice(0, 4).map(product => ({
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    originalPrice: Math.round(product.price / (1 - product.discount / 100)),
+    discount: product.discount,
+    image: product.image,
+    category: product.category
+  }));
+
+  // Si no hay suficientes ofertas, completar con productos mock
+  while (featuredProducts.length < 4) {
+    featuredProducts.push({
+      id: `mock-${featuredProducts.length}`,
+      name: 'Producto Gaming',
+      price: 99990,
+      originalPrice: 149990,
       discount: 33,
-      image: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=600&h=400&fit=crop',
-      category: 'Audio'
-    },
-    {
-      id: 5,
-      name: 'Mouse Gaming RGB 16000 DPI',
-      price: 49990,
-      originalPrice: 79990,
-      discount: 38,
-      image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=600&h=400&fit=crop',
-      category: 'Periféricos'
-    },
-    {
-      id: 6,
-      name: 'Silla Gamer Ergonómica',
-      price: 199990,
-      originalPrice: 279990,
-      discount: 29,
-      image: 'https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=600&h=400&fit=crop',
-      category: 'Mobiliario'
-    }
-  ];
+      image: '/assets/images/hero.jpg',
+      category: 'Gaming'
+    });
+  }
 
   return (
     <section className="featured-products-section">

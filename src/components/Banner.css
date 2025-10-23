@@ -5,8 +5,8 @@
   height: 500px;
   position: relative;
   overflow: hidden;
-  border-radius: var(--radius-lg);
-  margin-bottom: var(--spacing-2xl);
+  border-radius: 0;
+  margin: 0;
 }
 
 .banner-container {
