@@ -6,7 +6,6 @@ import CategoriesGrid from '../components/CategoriesGrid';
 import NewsSection from '../components/NewsSection';
 import SocialBar from '../components/SocialBar';
 import Newsletter from '../components/Newsletter';
-import FAQWidget from '../components/FAQWidget';
 import QuickPanel from '../components/QuickPanel';
 import './Home.css';
 
@@ -37,8 +36,7 @@ function Home() {
       {/* Newsletter */}
       <Newsletter />
 
-      {/* FAQ y Panel Flotante */}
-      <FAQWidget />
+      {/* Panel Flotante */}
       <QuickPanel />
 
       {/* 7. Footer - No modificar, se mantiene del layout principal */}
