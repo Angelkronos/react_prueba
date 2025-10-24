@@ -32,9 +32,13 @@ function NewsSection() {
             <article key={item.id} className="news-card">
               <div className="news-image-wrapper">
                 <img 
-                  src={item.image} 
+                  src={item.image || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80'} 
                   alt={item.title}
                   className="news-image"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80';
+                  }}
                 />
                 <div className="news-category-badge">{item.category}</div>
               </div>

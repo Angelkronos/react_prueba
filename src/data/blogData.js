@@ -4,7 +4,7 @@ export const blogArticles = [
     title: "Nuevos lanzamientos confirmados para 2025",
     category: "Lanzamientos",
     date: "2025-10-20",
-    image: "https://images.unsplash.com/photo-1610375207363-8f9cb71a21e3?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800&q=80",
     excerpt: "Los títulos AAA más esperados del año están por llegar...",
     content: `Los títulos AAA más esperados del año están por llegar y la industria del gaming está en su punto más álgido. Este 2025 promete ser uno de los años más emocionantes para los gamers de todo el mundo.
 
@@ -25,7 +25,7 @@ La comunidad está más emocionada que nunca. Las preventas ya están rompiendo 
     title: "Guía: Cómo armar tu setup gamer perfecto",
     category: "Guías",
     date: "2025-10-18",
-    image: "https://images.unsplash.com/photo-1618073195173-fbe9ed2c097a?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=800&q=80",
     excerpt: "Desde la silla hasta el monitor, crea tu setup definitivo...",
     content: `Armar el setup gamer perfecto es un arte que combina funcionalidad, estética y ergonomía. Aquí te compartimos la guía definitiva para crear tu estación de batalla ideal.
 
@@ -67,9 +67,11 @@ Con estos elementos, no solo mejorarás tu rendimiento, sino que disfrutarás ca
   {
     id: 3,
     title: "Torneos y eventos gaming de octubre",
+    id: 3,
+    title: "Torneos y eventos gaming de octubre",
     category: "Eventos",
     date: "2025-10-15",
-    image: "https://images.unsplash.com/photo-1606312616077-53d1e9e6c8b2?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80",
     excerpt: "Participa en torneos online y gana premios exclusivos...",
     content: `Octubre está cargado de acción competitiva con torneos y eventos que pondrán a prueba tus habilidades. Aquí te presentamos los eventos más importantes del mes:
 
@@ -118,7 +120,7 @@ Para más información visita nuestra sección de Eventos o contacta con nuestro
     title: "Review: Los mejores headsets gaming de 2025",
     category: "Reviews",
     date: "2025-10-12",
-    image: "https://images.unsplash.com/photo-1599669454699-248893623440?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1545127398-14699f92334b?w=800&q=80",
     excerpt: "Análisis completo de los auriculares que marcan la diferencia en competitivo...",
     content: `El audio es fundamental en el gaming competitivo y casual. Probamos los mejores headsets del mercado para ayudarte a elegir el perfecto para ti.
 
@@ -167,7 +169,7 @@ Tu elección dependerá de tu presupuesto y tipo de juegos. ¡Todos los modelos 
     title: "Tendencias gaming 2025: IA y Cloud Gaming",
     category: "Tecnología",
     date: "2025-10-08",
-    image: "https://images.unsplash.com/photo-1614294148960-9aa740632a87?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&q=80",
     excerpt: "Cómo la inteligencia artificial está revolucionando la industria del videojuego...",
     content: `La industria del videojuego está experimentando una revolución tecnológica sin precedentes. La IA y el Cloud Gaming están redefiniendo lo que consideramos posible.
 
@@ -214,7 +216,7 @@ Las barreras entre desarrolladores indie y AAA se difuminan. Herramientas con IA
     title: "Tips para mejorar en juegos competitivos",
     category: "Guías",
     date: "2025-10-05",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=800&q=80",
     excerpt: "Estrategias probadas para subir de rango y dominar el competitivo...",
     content: `Subir de rango en juegos competitivos requiere más que habilidad mecánica. Aquí las estrategias que usan los profesionales:
 
