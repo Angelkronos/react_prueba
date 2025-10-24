@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import { productsData } from '../data/productsData';
-import ProductCard from '../components/ProductCard';
-import Filters from '../components/Filters';
-import Pagination from '../components/Pagination';
-import Comparador from '../components/Comparador';
+import { ProductCard, Filters, Comparador } from '../components/products';
+import { Pagination } from '../components/ui';
 import './Productos.css';
 
 const Productos = () => {

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Form, Button, Card, ListGroup, Badge, Alert } from 'react-bootstrap';
 import { useCart } from '../context/CartContext';
-import CheckoutForm from '../components/CheckoutForm';
+import { CheckoutForm } from '../components/products';
 import './Checkout.css';
 
 function Checkout() {

@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import { Navbar } from './components/navigation';
+import { Footer } from './components/layout';
 import Home from './pages/Home';
 import Ayuda from './pages/Ayuda';
 import Productos from './pages/Productos';

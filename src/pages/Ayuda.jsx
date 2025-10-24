@@ -1,4 +1,4 @@
-import FAQWidget from '../components/FAQWidget';
+import { FAQWidget } from '../components/support';
 import { Link } from 'react-router-dom';
 import './Ayuda.css';
 

@@ -1,12 +1,9 @@
 import Banner from '../components/banner';
-import HeroSection from '../components/HeroSection';
-import PromoCarousel from '../components/PromoCarousel';
-import FeaturedProducts from '../components/FeaturedProducts';
+import { HeroSection } from '../components/layout';
+import { PromoCarousel, NewsSection, SocialBar, Newsletter } from '../components/marketing';
+import { FeaturedProducts } from '../components/products';
 import CategoriesGrid from '../components/categories';
-import NewsSection from '../components/NewsSection';
-import SocialBar from '../components/SocialBar';
-import Newsletter from '../components/Newsletter';
-import QuickPanel from '../components/QuickPanel';
+import { QuickPanel } from '../components/user';
 import './Home.css';
 
 function Home() {
