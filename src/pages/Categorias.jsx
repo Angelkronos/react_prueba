@@ -6,9 +6,9 @@ import {
   filterProducts, 
   getAllBrands, 
   getPriceRange 
-} from '../../data/productsData';
-import { useCart } from '../../context/CartContext';
-import { ProductCard } from '../../components/products';
+} from '../data/productsData';
+import { useCart } from '../context/CartContext';
+import { ProductCard } from '../components/products';
 import './Categorias.css';
 
 function Categorias() {

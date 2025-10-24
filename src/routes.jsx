@@ -1,10 +1,10 @@
 import { createBrowserRouter } from 'react-router'
 import Root from './pages/root'
-import Home from './pages/home/index'
-import Products from './pages/products/index'
+import { Home } from './pages/home'
+import { Productos } from './pages/products'
 import { productsLoader } from './loaders/products'
 import { homeLoader } from './loaders/home'
-import NewProduct from './pages/products/NewProduct'
+import { NewProduct } from './pages/products'
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            Component: Products,
+            Component: Productos,
             loader: productsLoader,
           },
           {

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { getOffers } from '../data/productsData';
+import { getOffers } from '../../data/productsData';
 import './FeaturedProducts.css';
 
 function FeaturedProducts() {

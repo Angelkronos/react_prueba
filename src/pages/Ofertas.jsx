@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Badge, Button } from 'react-bootstrap';
-import { getOffers, sortProducts } from '../../data/productsData';
-import { ProductCard } from '../../components/products';
+import { getOffers, sortProducts } from '../data/productsData';
+import { ProductCard } from '../components/products';
 import './Ofertas.css';
 
 function Ofertas() {

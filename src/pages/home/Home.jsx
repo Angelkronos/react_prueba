@@ -1,9 +1,9 @@
-import Banner from '../components/banner';
-import { HeroSection } from '../components/layout';
-import { PromoCarousel, NewsSection, SocialBar, Newsletter } from '../components/marketing';
-import { FeaturedProducts } from '../components/products';
-import CategoriesGrid from '../components/categories';
-import { QuickPanel } from '../components/user';
+import Banner from '../../components/banner';
+import { HeroSection } from '../../components/layout';
+import { PromoCarousel, NewsSection, SocialBar, Newsletter } from '../../components/marketing';
+import { FeaturedProducts } from '../../components/products';
+import CategoriesGrid from '../../components/categories';
+import { QuickPanel } from '../../components/user';
 import './Home.css';
 
 function Home() {
