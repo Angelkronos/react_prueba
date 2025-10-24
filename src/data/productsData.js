@@ -83,7 +83,6 @@ let productsDatabase = [
     originalPrice: 69990,
     discount: 14,
     image: "/assets/images/gow.jpg",
-    image: "",
     rating: 4.9,
     reviews: 4532,
     stock: 40,

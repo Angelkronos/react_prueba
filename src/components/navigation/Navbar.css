@@ -101,6 +101,19 @@
   box-shadow: 0 0 10px #00ff88;
 }
 
+/* Estado activo para enlaces */
+.navbar-menu li a.active {
+  color: var(--neon-green);
+  background: rgba(0, 255, 65, 0.15);
+  font-weight: 600;
+}
+
+.navbar-menu li a.active::after {
+  width: 80%;
+  background: var(--neon-green);
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
 .cart-btn {
   position: relative;
   display: flex;
