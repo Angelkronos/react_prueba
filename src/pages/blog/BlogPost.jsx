@@ -62,10 +62,20 @@ function BlogPost() {
       <aside className="blog-post-sidebar">
         <h3 className="sidebar-title">Artículos relacionados</h3>
         <div className="sidebar-articles">
-          {blogArticles
-            .filter(a => a.id !== article.id && a.category === article.category)
-            .slice(0, 3)
-            .map(relatedArticle => (
+          {(() => {
+            // Primero intentar obtener artículos de la misma categoría
+            const sameCategoryArticles = blogArticles
+              .filter(a => a.id !== article.id && a.category === article.category)
+              .slice(0, 3);
+            
+            // Si no hay suficientes de la misma categoría, complementar con otros
+            const relatedArticles = sameCategoryArticles.length > 0 
+              ? sameCategoryArticles 
+              : blogArticles
+                  .filter(a => a.id !== article.id)
+                  .slice(0, 3);
+            
+            return relatedArticles.map(relatedArticle => (
               <Link 
                 key={relatedArticle.id}
                 to={`/blog/${relatedArticle.id}`}
@@ -81,30 +91,8 @@ function BlogPost() {
                   <h4 className="sidebar-article-title">{relatedArticle.title}</h4>
                 </div>
               </Link>
-            ))}
-          
-          {blogArticles.filter(a => a.id !== article.id && a.category === article.category).length === 0 && (
-            blogArticles
-              .filter(a => a.id !== article.id)
-              .slice(0, 3)
-              .map(relatedArticle => (
-                <Link 
-                  key={relatedArticle.id}
-                  to={`/blog/${relatedArticle.id}`}
-                  className="sidebar-article"
-                >
-                  <img 
-                    src={relatedArticle.image} 
-                    alt={relatedArticle.title}
-                    className="sidebar-article-image"
-                  />
-                  <div className="sidebar-article-info">
-                    <span className="sidebar-article-category">{relatedArticle.category}</span>
-                    <h4 className="sidebar-article-title">{relatedArticle.title}</h4>
-                  </div>
-                </Link>
-              ))
-          )}
+            ));
+          })()}
         </div>
       </aside>
     </div>
