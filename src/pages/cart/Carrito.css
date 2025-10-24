@@ -119,6 +119,40 @@
   text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
 }
 
+.auth-notice {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(138, 43, 226, 0.1));
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  animation: pulse-border 2s ease-in-out infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+  }
+  50% {
+    border-color: rgba(0, 212, 255, 0.6);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  }
+}
+
+.auth-notice p {
+  margin: 0 0 0.5rem 0;
+  color: #00d4ff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.auth-notice small {
+  display: block;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
 .btn-proceed-checkout,
 .btn-back-cart {
   width: 100%;

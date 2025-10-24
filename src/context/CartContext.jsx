@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useRef } from 'react';
 
 const CartContext = createContext();
 
@@ -14,6 +14,7 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
   const [notifications, setNotifications] = useState([]);
+  const lastNotificationRef = useRef({ message: '', timestamp: 0 });
 
   // Cargar carrito desde localStorage
   useEffect(() => {
@@ -100,12 +101,23 @@ export const CartProvider = ({ children }) => {
   // Mover de wishlist a carrito
   const moveToCart = (product) => {
     addToCart(product);
-    removeFromWishlist(product.id);
+    setWishlist(prevWishlist => prevWishlist.filter(item => item.id !== product.id));
+    // No llamamos a removeFromWishlist para evitar doble notificación
   };
 
-  // Sistema de notificaciones
+  // Sistema de notificaciones con prevención de duplicados
   const showNotification = (message, type = 'info') => {
-    const id = Date.now();
+    const now = Date.now();
+    
+    // Prevenir notificaciones duplicadas en los últimos 500ms
+    if (lastNotificationRef.current.message === message && 
+        now - lastNotificationRef.current.timestamp < 500) {
+      return;
+    }
+    
+    lastNotificationRef.current = { message, timestamp: now };
+    
+    const id = now;
     const notification = { id, message, type };
     
     setNotifications(prev => [...prev, notification]);

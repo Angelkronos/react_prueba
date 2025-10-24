@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useCart } from '../../context/CartContext';
+import { useAuth } from '../../context/AuthContext';
 import './Navbar.css';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { getCartItemsCount } = useCart();
+  const { user, isAuthenticated } = useAuth();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -33,7 +35,18 @@ function Navbar() {
           <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Inicio</Link></li>
           <li><Link to="/productos" onClick={() => setIsMenuOpen(false)}>Productos</Link></li>
           <li><Link to="/ayuda" onClick={() => setIsMenuOpen(false)}>Ayuda</Link></li>
-          <li><Link to="/perfil" onClick={() => setIsMenuOpen(false)}>Mi Perfil</Link></li>
+          <li>
+            {isAuthenticated ? (
+              <Link to="/perfil" onClick={() => setIsMenuOpen(false)} className="user-link">
+                <span className="user-avatar">{user?.avatar || '👤'}</span>
+                <span className="user-name">{user?.name || 'Mi Perfil'}</span>
+              </Link>
+            ) : (
+              <Link to="/login" onClick={() => setIsMenuOpen(false)} className="login-link">
+                🔐 Iniciar Sesión
+              </Link>
+            )}
+          </li>
           <li>
             <Link to="/carrito" className="cart-btn" onClick={() => setIsMenuOpen(false)}>
               <span className="cart-icon">🛒</span>

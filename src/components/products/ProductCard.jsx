@@ -8,7 +8,15 @@ const ProductCard = ({ product, onCompare }) => {
     wishlist.some(item => item.id === product.id)
   );
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addToCart(product);
+  };
+
+  const handleQuickView = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     addToCart(product);
   };
 
@@ -34,7 +42,7 @@ const ProductCard = ({ product, onCompare }) => {
       <div className="product-image-container">
         <img src={product.image} alt={product.name} className="product-image" />
         <div className="product-overlay">
-          <button className="btn-quick-view" onClick={handleAddToCart}>
+          <button className="btn-quick-view" onClick={handleQuickView}>
             Vista Rápida
           </button>
         </div>

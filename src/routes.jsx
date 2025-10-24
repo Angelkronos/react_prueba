@@ -3,6 +3,7 @@ import Root from './pages/root'
 import { Home } from './pages/home'
 import { Productos } from './pages/products'
 import { Perfil } from './pages/user'
+import { Login, Register } from './pages/auth'
 import { Carrito } from './pages/cart'
 import { Ayuda } from './pages/support'
 import Error404 from './pages/Error404'
@@ -11,6 +12,7 @@ import { homeLoader } from './loaders/home'
 import { NewProduct } from './pages/products'
 import BlogList from './pages/blog'
 import BlogPost from './pages/blog/BlogPost'
+import ProtectedRoute from './components/ProtectedRoute'
 
 export const router = createBrowserRouter([
   {
@@ -42,8 +44,20 @@ export const router = createBrowserRouter([
         ]
       },
       {
+        path: "login",
+        Component: Login,
+      },
+      {
+        path: "registro",
+        Component: Register,
+      },
+      {
         path: "perfil",
-        Component: Perfil,
+        element: (
+          <ProtectedRoute>
+            <Perfil />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "carrito",

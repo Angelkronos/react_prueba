@@ -1,12 +1,16 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import { useAuth } from '../../context/AuthContext';
 import { CartItem } from '../../components/cart';
 import { CheckoutForm } from '../../components/products';
 import { Link } from 'react-router-dom';
 import './Carrito.css';
 
 const Carrito = () => {
+  const navigate = useNavigate();
   const { cart, wishlist, getCartTotal, getCartItemsCount, clearCart, moveToCart } = useCart();
+  const { isAuthenticated } = useAuth();
   const [showCheckout, setShowCheckout] = useState(false);
   const [orderComplete, setOrderComplete] = useState(false);
   const [orderDetails, setOrderDetails] = useState(null);
@@ -23,6 +27,15 @@ const Carrito = () => {
     setOrderDetails(details);
     setOrderComplete(true);
     setShowCheckout(false);
+  };
+
+  const handleProceedToCheckout = () => {
+    if (!isAuthenticated) {
+      // Guardar la ruta actual para redirigir después del login
+      navigate('/login', { state: { from: { pathname: '/carrito' } } });
+    } else {
+      setShowCheckout(true);
+    }
   };
 
   if (orderComplete && orderDetails) {
@@ -139,12 +152,19 @@ const Carrito = () => {
               </div>
             </div>
 
+            {!isAuthenticated && (
+              <div className="auth-notice">
+                <p>🔐 <strong>Inicia sesión</strong> para completar tu compra de forma segura</p>
+                <small>Podrás guardar tus pedidos y acceder a descuentos exclusivos</small>
+              </div>
+            )}
+
             {!showCheckout ? (
               <button
                 className="btn-proceed-checkout"
-                onClick={() => setShowCheckout(true)}
+                onClick={handleProceedToCheckout}
               >
-                💳 Proceder al Pago
+                💳 {isAuthenticated ? 'Proceder al Pago' : 'Iniciar Sesión para Pagar'}
               </button>
             ) : (
               <button
