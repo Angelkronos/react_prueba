@@ -30,20 +30,6 @@ function CategoriesGrid() {
       image: '/assets/images/chica.jpg',
       link: '/categorias?categoria=perifericos',
       icon: '🖱️'
-    },
-    {
-      id: 5,
-      name: 'Headsets',
-      image: '/assets/images/chico.jpg',
-      link: '/categorias?categoria=audio',
-      icon: '🎧'
-    },
-    {
-      id: 6,
-      name: 'Monitores',
-      image: '/assets/images/hero.jpg',
-      link: '/categorias?categoria=monitores',
-      icon: '🖥️'
     }
   ];
 

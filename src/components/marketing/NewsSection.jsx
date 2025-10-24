@@ -1,36 +1,18 @@
 import { Link } from 'react-router-dom';
+import blogArticles from '../../data/blogData';
 import './NewsSection.css';
 
 function NewsSection() {
-  const news = [
-    {
-      id: 1,
-      title: 'Nuevos lanzamientos confirmados para 2025',
-      description: 'Los títulos AAA más esperados del año están por llegar. Descubre qué juegos dominarán la escena gaming.',
-      image: '/assets/images/hero.jpg',
-      date: '20 Oct 2025',
-      category: 'Lanzamientos',
-      link: '/productos'
-    },
-    {
-      id: 2,
-      title: 'Guía: Cómo armar tu setup gamer perfecto',
-      description: 'Desde la silla hasta el monitor, te mostramos qué necesitas para crear el setup definitivo sin gastar de más.',
-      image: '/assets/images/hero2.jpg',
-      date: '18 Oct 2025',
-      category: 'Guías',
-      link: '/productos?categoria=accesorios'
-    },
-    {
-      id: 3,
-      title: 'Torneos y eventos gaming de octubre',
-      description: 'Participa en nuestros torneos online y gana premios exclusivos. Revisa el calendario completo aquí.',
-      image: '/assets/images/hero3.jpg',
-      date: '15 Oct 2025',
-      category: 'Eventos',
-      link: '/ayuda'
-    }
-  ];
+  // Mostrar los 3 artículos más recientes del blog
+  const news = blogArticles.slice(0, 3).map(article => ({
+    id: article.id,
+    title: article.title,
+    description: article.excerpt,
+    image: article.image,
+    date: new Date(article.date).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' }),
+    category: article.category,
+    link: `/blog/${article.id}`
+  }));
 
   return (
     <section className="news-section">
