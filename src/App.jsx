@@ -2,16 +2,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { Navbar } from './components/navigation';
 import { Footer } from './components/layout';
-import Home from './pages/Home';
-import Ayuda from './pages/Ayuda';
-import Productos from './pages/Productos';
-import Carrito from './pages/Carrito';
-import Perfil from './pages/Perfil';
-import Categorias from './pages/Categorias';
-import Ofertas from './pages/Ofertas';
-import Checkout from './pages/Checkout';
-import CompraExitosa from './pages/CompraExitosa';
-import CompraFallida from './pages/CompraFallida';
+import { Home } from './pages/home';
+import { Ayuda } from './pages/support';
+import { Productos, Categorias, Ofertas } from './pages/products';
+import { Carrito } from './pages/cart';
+import { Perfil } from './pages/user';
+import { Checkout, CompraExitosa, CompraFallida } from './pages/checkout';
 import './App.css';
 
 function App() {
