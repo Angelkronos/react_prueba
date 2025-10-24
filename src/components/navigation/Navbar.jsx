@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
@@ -8,9 +8,16 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { getCartItemsCount } = useCart();
   const { user, isAuthenticated } = useAuth();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const isActive = (path) => {
+    if (path === '/' && location.pathname === '/') return true;
+    if (path !== '/' && location.pathname.startsWith(path)) return true;
+    return false;
   };
 
   return (
@@ -32,9 +39,33 @@ function Navbar() {
         </button>
 
         <ul className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
-          <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Inicio</Link></li>
-          <li><Link to="/productos" onClick={() => setIsMenuOpen(false)}>Productos</Link></li>
-          <li><Link to="/ayuda" onClick={() => setIsMenuOpen(false)}>Ayuda</Link></li>
+          <li>
+            <Link 
+              to="/" 
+              onClick={() => setIsMenuOpen(false)}
+              className={isActive('/') ? 'active' : ''}
+            >
+              Inicio
+            </Link>
+          </li>
+          <li>
+            <Link 
+              to="/productos" 
+              onClick={() => setIsMenuOpen(false)}
+              className={isActive('/productos') ? 'active' : ''}
+            >
+              Productos
+            </Link>
+          </li>
+          <li>
+            <Link 
+              to="/ayuda" 
+              onClick={() => setIsMenuOpen(false)}
+              className={isActive('/ayuda') ? 'active' : ''}
+            >
+              Ayuda
+            </Link>
+          </li>
           <li>
             {isAuthenticated ? (
               <Link to="/perfil" onClick={() => setIsMenuOpen(false)} className="user-link">
