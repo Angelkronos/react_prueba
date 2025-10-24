@@ -5,3 +5,4 @@ export { default as FeaturedProducts } from './FeaturedProducts';
 export { default as Comparador } from './Comparador';
 export { default as Filters } from './Filters';
 export { default as CheckoutForm } from './CheckoutForm';
+export { default as VistaRapidaProducto } from './VistaRapidaProducto';

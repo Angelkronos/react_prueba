@@ -154,7 +154,7 @@ const Productos = () => {
         <div className="search-bar">
           <input
             type="text"
-            placeholder="🔍 Buscar productos, marcas, categorías..."
+            placeholder="Buscar productos, marcas, categorías..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
