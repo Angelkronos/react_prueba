@@ -15,7 +15,7 @@ function CategoriesGrid() {
       name: 'PC Gamer',
       image: '/assets/images/hero2.jpg',
       link: '/categorias?categoria=pc',
-      icon: '�'
+      icon: '💻'
     },
     {
       id: 3,
@@ -29,7 +29,7 @@ function CategoriesGrid() {
       name: 'Periféricos',
       image: '/assets/images/chica.jpg',
       link: '/categorias?categoria=perifericos',
-      icon: '�️'
+      icon: '🖱️'
     },
     {
       id: 5,

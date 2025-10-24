@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PointsWidget from '../components/PointsWidget';
 import ShareButton from '../components/ShareButton';
-import ChatWidget from '../components/ChatWidget';
+import ChatWidget from '../components/chat';
 import './Perfil.css';
 
 const Perfil = () => {

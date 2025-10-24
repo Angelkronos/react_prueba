@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
-import CartItem from '../components/CartItem';
+import CartItem from '../components/cart';
 import CheckoutForm from '../components/CheckoutForm';
 import { Link } from 'react-router-dom';
 import './Carrito.css';
