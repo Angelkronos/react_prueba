@@ -2,6 +2,10 @@ import { createBrowserRouter } from 'react-router'
 import Root from './pages/root'
 import { Home } from './pages/home'
 import { Productos } from './pages/products'
+import { Perfil } from './pages/user'
+import { Carrito } from './pages/cart'
+import { Ayuda } from './pages/support'
+import Error404 from './pages/Error404'
 import { productsLoader } from './loaders/products'
 import { homeLoader } from './loaders/home'
 import { NewProduct } from './pages/products'
@@ -34,6 +38,22 @@ export const router = createBrowserRouter([
             loader: null,
           }
         ]
+      },
+      {
+        path: "perfil",
+        Component: Perfil,
+      },
+      {
+        path: "carrito",
+        Component: Carrito,
+      },
+      {
+        path: "ayuda",
+        Component: Ayuda,
+      },
+      {
+        path: "*",
+        Component: Error404,
       }
     ]
   }

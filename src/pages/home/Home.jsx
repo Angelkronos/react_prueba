@@ -1,5 +1,6 @@
 import Banner from '../../components/banner';
 import { HeroSection } from '../../components/layout';
+// import { Hero } from '../../components/home'; // ← Este parecía duplicado
 import { PromoCarousel, NewsSection, SocialBar, Newsletter } from '../../components/marketing';
 import { FeaturedProducts } from '../../components/products';
 import CategoriesGrid from '../../components/categories';
@@ -12,22 +13,22 @@ function Home() {
       {/* Banner Superior */}
       <Banner />
 
-      {/* 1. Hero Section - Sin espacios negros */}
+      {/* Hero Section con Carrusel - PRINCIPAL */}
       <HeroSection />
 
-      {/* 2. Carrusel de Promociones - 5 slides con imágenes locales */}
+      {/* Carrusel de Promociones */}
       <PromoCarousel />
 
-      {/* 3. Productos Destacados - 4 productos con ofertas reales */}
+      {/* Productos Destacados */}
       <FeaturedProducts />
 
-      {/* 4. Grid de Categorías - 6 categorías con hover neón */}
+      {/* Grid de Categorías */}
       <CategoriesGrid />
 
-      {/* 5. Noticias y Eventos Gaming - 3 cards con fade-in */}
+      {/* Noticias y Eventos Gaming */}
       <NewsSection />
 
-      {/* 6. Redes Sociales - Instagram, TikTok, YouTube, Discord */}
+      {/* Redes Sociales */}
       <SocialBar />
 
       {/* Newsletter */}
@@ -36,7 +37,8 @@ function Home() {
       {/* Panel Flotante */}
       <QuickPanel />
 
-      {/* 7. Footer - No modificar, se mantiene del layout principal */}
+      {/* Hero duplicado COMENTADO - parecía repetido */}
+      {/* <Hero /> */}
     </div>
   );
 }
