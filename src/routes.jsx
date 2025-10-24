@@ -9,6 +9,8 @@ import Error404 from './pages/Error404'
 import { productsLoader } from './loaders/products'
 import { homeLoader } from './loaders/home'
 import { NewProduct } from './pages/products'
+import BlogList from './pages/blog'
+import BlogPost from './pages/blog/BlogPost'
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +48,19 @@ export const router = createBrowserRouter([
       {
         path: "carrito",
         Component: Carrito,
+      },
+      {
+        path: "blog",
+        children: [
+          {
+            index: true,
+            Component: BlogList,
+          },
+          {
+            path: ":id",
+            Component: BlogPost,
+          }
+        ]
       },
       {
         path: "ayuda",
