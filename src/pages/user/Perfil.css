@@ -14,6 +14,35 @@
   border: 2px solid rgba(138, 43, 226, 0.3);
   border-radius: 16px;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-logout {
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, #ff0064, #ff4500);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.btn-logout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(255, 0, 100, 0.4);
+}
+
+.btn-logout:active {
+  transform: translateY(0);
 }
 
 .profile-avatar {

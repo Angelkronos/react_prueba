@@ -1,14 +1,19 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import { PointsWidget, ShareButton } from '../../components/user';
 import { ChatWidget } from '../../components/support';
 import './Perfil.css';
 
 const Perfil = () => {
-  const [userProfile, setUserProfile] = useState({
-    name: 'Gamer Pro',
-    email: 'gamer@levelup.cl',
-    avatar: '🎮',
-    memberSince: '2024',
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  
+  const [userProfile] = useState({
+    name: user?.name || 'Gamer Pro',
+    email: user?.email || 'gamer@levelup.cl',
+    avatar: user?.avatar || '🎮',
+    memberSince: user?.memberSince || '2024',
   });
 
   const [activeTab, setActiveTab] = useState('profile');
@@ -81,6 +86,11 @@ const Perfil = () => {
     price: 499990,
   };
 
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
   return (
     <div className="perfil-page">
       <div className="perfil-header">
@@ -92,7 +102,12 @@ const Perfil = () => {
           <p>{userProfile.email}</p>
           <span className="member-badge">Miembro desde {userProfile.memberSince}</span>
         </div>
-        <ShareButton product={demoProduct} />
+        <div className="header-actions">
+          <ShareButton product={demoProduct} />
+          <button className="btn-logout" onClick={handleLogout}>
+            🚪 Cerrar Sesión
+          </button>
+        </div>
       </div>
 
       <div className="perfil-tabs">
