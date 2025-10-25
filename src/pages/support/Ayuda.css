@@ -180,7 +180,7 @@
 }
 
 .support-description {
-  color: var(--gray-400);
+  color: var(--gray-300);
   font-size: var(--text-sm);
   line-height: 1.5;
   margin: 0;
@@ -189,7 +189,7 @@
 
 .support-arrow {
   font-size: var(--text-xl);
-  color: var(--gray-600);
+  color: var(--gray-400);
   align-self: flex-end;
   transition: all var(--transition-base);
 }
@@ -213,7 +213,7 @@
 
 .section-subtitle {
   text-align: center;
-  color: var(--gray-400);
+  color: var(--gray-300);
   font-size: var(--text-base);
   margin: 0 0 var(--spacing-2xl) 0;
 }
@@ -260,7 +260,7 @@
 }
 
 .contact-description {
-  color: var(--gray-300);
+  color: var(--gray-200);
   font-size: var(--text-sm);
   margin: 0;
 }
@@ -343,7 +343,7 @@
 }
 
 .tip-text {
-  color: var(--gray-400);
+  color: var(--gray-300);
   font-size: var(--text-sm);
   line-height: 1.6;
   margin: 0;

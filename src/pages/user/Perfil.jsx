@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { PointsWidget, ShareButton } from '../../components/user';
 import { ChatWidget } from '../../components/support';
@@ -8,15 +8,66 @@ import './Perfil.css';
 const Perfil = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   
-  const [userProfile] = useState({
+  const [userProfile, setUserProfile] = useState({
     name: user?.name || 'Gamer Pro',
     email: user?.email || 'gamer@levelup.cl',
     avatar: user?.avatar || '🎮',
+    avatarImage: user?.avatarImage || null,
     memberSince: user?.memberSince || '2024',
   });
 
   const [activeTab, setActiveTab] = useState('profile');
+
+  // Leer el parámetro 'tab' de la URL al cargar el componente
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    if (tab && ['profile', 'orders', 'reviews', 'points'].includes(tab)) {
+      setActiveTab(tab);
+    }
+  }, [searchParams]);
+
+  // Manejar el cambio de imagen de perfil
+  const handleAvatarChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      // Validar que sea una imagen
+      if (!file.type.startsWith('image/')) {
+        alert('Por favor selecciona un archivo de imagen válido');
+        return;
+      }
+      
+      // Validar tamaño (máximo 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('La imagen no debe superar los 5MB');
+        return;
+      }
+
+      // Crear URL temporal para previsualización
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setUserProfile(prev => ({
+          ...prev,
+          avatarImage: reader.result
+        }));
+        // Aquí podrías guardar en localStorage o enviar al backend
+        localStorage.setItem('userAvatarImage', reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Cargar imagen guardada del localStorage al montar
+  useEffect(() => {
+    const savedAvatar = localStorage.getItem('userAvatarImage');
+    if (savedAvatar) {
+      setUserProfile(prev => ({
+        ...prev,
+        avatarImage: savedAvatar
+      }));
+    }
+  }, []);
 
   const [orders] = useState([
     {
@@ -95,7 +146,25 @@ const Perfil = () => {
     <div className="perfil-page">
       <div className="perfil-header">
         <div className="profile-avatar">
-          <span className="avatar-icon">{userProfile.avatar}</span>
+          {userProfile.avatarImage ? (
+            <img 
+              src={userProfile.avatarImage} 
+              alt="Avatar" 
+              className="avatar-image"
+            />
+          ) : (
+            <span className="avatar-icon">{userProfile.avatar}</span>
+          )}
+          <label htmlFor="avatar-upload" className="avatar-upload-btn">
+            📷
+            <input
+              id="avatar-upload"
+              type="file"
+              accept="image/*"
+              onChange={handleAvatarChange}
+              style={{ display: 'none' }}
+            />
+          </label>
         </div>
         <div className="profile-info">
           <h1>{userProfile.name}</h1>

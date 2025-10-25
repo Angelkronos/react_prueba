@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import './QuickPanel.css';
 
 function QuickPanel() {
   const [isOpen, setIsOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   const quickLinks = [
     {
@@ -12,7 +14,8 @@ function QuickPanel() {
       title: 'Catálogo',
       description: 'Ver todos los juegos',
       link: '/productos',
-      color: 'green'
+      color: 'green',
+      requiresAuth: false
     },
     {
       id: 2,
@@ -20,23 +23,26 @@ function QuickPanel() {
       title: 'Ofertas',
       description: 'Descuentos especiales',
       link: '/productos?categoria=ofertas',
-      color: 'pink'
+      color: 'pink',
+      requiresAuth: false
     },
     {
       id: 3,
       icon: '⭐',
       title: 'Favoritos',
       description: 'Tus juegos guardados',
-      link: '/perfil/favoritos',
-      color: 'blue'
+      link: '/perfil?tab=reviews',
+      color: 'blue',
+      requiresAuth: true
     },
     {
       id: 4,
       icon: '📦',
       title: 'Pedidos',
       description: 'Historial de compras',
-      link: '/perfil/pedidos',
-      color: 'purple'
+      link: '/perfil?tab=orders',
+      color: 'purple',
+      requiresAuth: true
     },
     {
       id: 5,
@@ -44,12 +50,26 @@ function QuickPanel() {
       title: 'Soporte',
       description: 'Centro de ayuda',
       link: '/ayuda',
-      color: 'yellow'
+      color: 'yellow',
+      requiresAuth: false
     }
   ];
 
+  // Filtrar links según autenticación
+  const visibleLinks = quickLinks.filter(link => 
+    !link.requiresAuth || isAuthenticated
+  );
+
   return (
     <>
+      {/* Overlay para cerrar */}
+      {isOpen && (
+        <div 
+          className="quick-panel-overlay" 
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
       {/* Botón flotante */}
       <button 
         className={`quick-panel-toggle ${isOpen ? 'active' : ''}`}
@@ -57,7 +77,7 @@ function QuickPanel() {
         aria-label="Panel de acceso rápido"
       >
         <span className="toggle-icon">{isOpen ? '✕' : '⚡'}</span>
-        <span className="toggle-text">Quick Access</span>
+        <span className="toggle-text">{"Quick\nAccess"}</span>
       </button>
 
       {/* Panel flotante */}
@@ -71,7 +91,7 @@ function QuickPanel() {
         </div>
 
         <div className="quick-panel-grid">
-          {quickLinks.map((link) => (
+          {visibleLinks.map((link) => (
             <Link
               key={link.id}
               to={link.link}
@@ -87,14 +107,6 @@ function QuickPanel() {
             </Link>
           ))}
         </div>
-
-        {/* Overlay para cerrar */}
-        {isOpen && (
-          <div 
-            className="quick-panel-overlay" 
-            onClick={() => setIsOpen(false)}
-          />
-        )}
       </div>
     </>
   );
