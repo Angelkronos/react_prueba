@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
+import CartButton from './CartButton';
 import './Navbar.css';
 
 function Navbar() {
@@ -79,12 +80,7 @@ function Navbar() {
             )}
           </li>
           <li>
-            <Link to="/carrito" className="cart-btn" onClick={() => setIsMenuOpen(false)}>
-              <span className="cart-icon">🛒</span>
-              {getCartItemsCount() > 0 && (
-                <span className="cart-count">{getCartItemsCount()}</span>
-              )}
-            </Link>
+            <CartButton count={getCartItemsCount()} />
           </li>
         </ul>
       </div>
