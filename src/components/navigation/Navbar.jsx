@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import CartButton from './CartButton';
+import LoginButton from './LoginButton';
 import './Navbar.css';
 
 function Navbar() {
@@ -74,9 +75,7 @@ function Navbar() {
                 <span className="user-name">{user?.name || 'Mi Perfil'}</span>
               </Link>
             ) : (
-              <Link to="/login" onClick={() => setIsMenuOpen(false)} className="login-link">
-                🔐 Iniciar Sesión
-              </Link>
+              <LoginButton />
             )}
           </li>
           <li>

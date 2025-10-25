@@ -140,20 +140,6 @@
   white-space: nowrap;
 }
 
-.login-link {
-  background: linear-gradient(135deg, var(--electric-blue), var(--neon-green)) !important;
-  color: var(--cyber-black) !important;
-  font-weight: 700;
-  display: flex !important;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.login-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px var(--neon-green);
-}
-
 /* Menu Toggle (Hamburger) */
 .menu-toggle {
   display: none;
