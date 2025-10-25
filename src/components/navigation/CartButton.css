@@ -15,7 +15,7 @@
 }
 
 .cart-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.07);
   box-shadow: 0 0 25px #00ff88, 0 0 50px #00b3ff;
   border-color: #00ff88;
   background: linear-gradient(135deg, #2a0050, #0a0066);
@@ -25,18 +25,17 @@
   transform: scale(0.97);
 }
 
-/* Ícono del carrito */
-.cart-icon {
-  width: 24px;
-  height: 24px;
-  color: #ffffff;
+/* Emoji del carrito */
+.cart-emoji {
+  font-size: 1.5rem;
   filter: drop-shadow(0 0 6px #00b3ff);
   transition: all 0.3s ease;
+  display: inline-block;
 }
 
-.cart-btn:hover .cart-icon {
-  filter: drop-shadow(0 0 10px #00ff88);
-  color: #00ff88;
+.cart-btn:hover .cart-emoji {
+  filter: drop-shadow(0 0 10px #00ff88) drop-shadow(0 0 15px #00b3ff);
+  transform: scale(1.1);
 }
 
 /* Badge del contador */
