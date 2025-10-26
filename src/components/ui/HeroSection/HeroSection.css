@@ -80,8 +80,10 @@
   font-size: 1.25rem;
   color: #cccccc;
   max-width: 600px;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 2.5rem auto;
   line-height: 1.6;
+  text-align: center;
+  padding: 0 1rem;
 }
 
 /* Contenedor de botones */
