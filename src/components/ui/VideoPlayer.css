@@ -1,0 +1,21 @@
+.video-player {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+
+.video-player video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  background: #000;
+  outline: none;
+}
+
+/* Mobile-friendly: ensure the video is responsive and doesn't overflow */
+@media (max-width: 600px) {
+  .video-player video {
+    border-radius: 6px;
+  }
+}

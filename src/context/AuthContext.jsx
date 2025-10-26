@@ -16,19 +16,30 @@ export const AuthProvider = ({ children }) => {
 
   // Cargar usuario desde localStorage al iniciar
   useEffect(() => {
-    // Crear usuario demo si no existen usuarios
+    // Crear usuarios demo si no existen usuarios
     const users = JSON.parse(localStorage.getItem('users') || '[]');
     if (users.length === 0) {
-      const demoUser = {
-        id: 1,
-        name: 'Gamer Demo',
-        email: 'demo@levelup.cl',
-        password: 'demo123',
-        avatar: '🎮',
-        memberSince: '2024',
-        points: 1250,
-      };
-      localStorage.setItem('users', JSON.stringify([demoUser]));
+      const demoUsers = [
+        {
+          id: 1,
+          name: 'Gamer Demo',
+          email: 'demo@levelup.cl',
+          password: 'demo123',
+          avatar: '🎮',
+          memberSince: '2024',
+          points: 1250,
+        },
+        {
+          id: 2,
+          name: 'Estudiante DUOC',
+          email: 'estudiante@duoc.cl',
+          password: 'duoc123',
+          avatar: '🎓',
+          memberSince: '2025',
+          points: 500,
+        }
+      ];
+      localStorage.setItem('users', JSON.stringify(demoUsers));
     }
 
     const storedUser = localStorage.getItem('user');

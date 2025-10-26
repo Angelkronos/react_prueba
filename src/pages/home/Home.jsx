@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Banner from '../../components/banner';
+import HeroSection from '../../components/ui/HeroSection';
 import { NewsSection, SocialBar, Newsletter } from '../../components/marketing';
 import { FeaturedProducts } from '../../components/products';
 import CategoriesGrid from '../../components/categories';
@@ -14,7 +14,7 @@ function Home() {
 
   return (
     <main className="home-page">
-      <Banner />
+      <HeroSection />
       <FeaturedProducts />
       <CategoriesGrid />
       <NewsSection />

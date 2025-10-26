@@ -29,7 +29,7 @@ function FeaturedProducts() {
   }
 
   return (
-    <section className="featured-products-section">
+    <section className="featured-products-section" id="featured-products">
       <div className="featured-container">
         <div className="section-header">
           <h2 className="section-title">
