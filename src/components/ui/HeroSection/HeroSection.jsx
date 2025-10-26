@@ -5,16 +5,19 @@ import './HeroSection.css';
 export default function HeroSection() {
   const navigate = useNavigate();
   const videoRef = useRef(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(true); // Cambiado a true para mostrar el video desde el inicio
 
   useEffect(() => {
     // Forzar reproducción del video cuando el componente se monta
     if (videoRef.current) {
+      console.log('🎬 Intentando cargar video desde:', videoRef.current.src);
+      
       // Esperar un momento para que el DOM esté listo
       const timer = setTimeout(() => {
         videoRef.current.play()
           .then(() => {
             console.log('✅ Video reproduciéndose correctamente');
+            setVideoLoaded(true);
           })
           .catch(error => {
             console.error('❌ Error al reproducir video:', error);
@@ -27,13 +30,14 @@ export default function HeroSection() {
   }, []);
 
   const handleVideoLoad = () => {
-    console.log('📹 Video cargado, activando transición fade-in...');
+    console.log('📹 Video cargado correctamente desde:', videoRef.current?.currentSrc);
     setVideoLoaded(true);
   };
 
   const handleVideoError = (e) => {
     console.error('❌ Error al cargar el video:', e);
-    console.log('Ruta intentada: /assets/videos/hero-bg.mp4');
+    console.error('Ruta intentada:', videoRef.current?.currentSrc);
+    console.log('Archivo esperado: /assets/videos/videeeo.mp4');
   };
 
   return (

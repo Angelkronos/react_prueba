@@ -19,6 +19,7 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  opacity: 1; /* Siempre visible */
   transition: opacity 0.8s ease-in-out;
   /* Optimizaciones de rendimiento */
   will-change: opacity;
@@ -27,12 +28,12 @@
   -webkit-backface-visibility: hidden;
 }
 
-/* Estado inicial del video (oculto) */
+/* Estado inicial del video (visible desde el inicio) */
 .hero-video.video-hidden {
-  opacity: 0;
+  opacity: 0.5; /* Semi-transparente mientras carga */
 }
 
-/* Estado visible del video (fade-in suave) */
+/* Estado visible del video (completamente opaco) */
 .hero-video.video-visible {
   opacity: 1;
 }
