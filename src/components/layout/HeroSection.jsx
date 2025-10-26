@@ -7,29 +7,32 @@ const slides = [
   {
     id: 1,
     image: '/assets/images/hero1.jpg',
-    title: 'Mega Ofertas Gamer',
-    subtitle: 'Hasta 50% de descuento en juegos seleccionados. ¡No te pierdas las mejores ofertas de la temporada!',
+    tag: '🔥 NUEVAS OFERTAS',
+    title: 'ACCESORIOS PRO',
+    subtitle: 'Hasta 50% de descuento en juegos seleccionados. ¡Mejora tu setup con los mejores periféricos!',
     link: '/productos',
-    buttonText: 'Ver Ofertas',
-    buttonIcon: '🔥'
+    buttonText: 'COMPRAR AHORA',
+    buttonIcon: '→'
   },
   {
     id: 2,
     image: '/assets/images/chica.jpg',
-    title: 'Descuento Especial DUOC UC',
+    tag: '🎓 DESCUENTO DUOC UC',
+    title: 'BENEFICIO ESTUDIANTIL',
     subtitle: 'Estudiantes obtienen 20% adicional en accesorios gaming. Presenta tu credencial universitaria.',
     link: '/productos',
-    buttonText: 'Ver Beneficio',
-    buttonIcon: '🎓'
+    buttonText: 'VER BENEFICIO',
+    buttonIcon: '→'
   },
   {
     id: 3,
     image: '/assets/images/hero3.jpg',
-    title: 'Torneos y Eventos Gamer',
+    tag: '🎮 EVENTOS GAMER',
+    title: 'COMPITE Y GANA PREMIOS',
     subtitle: 'Inscríbete en nuestros torneos exclusivos y demuestra tus habilidades. ¡Premios increíbles te esperan!',
     link: '/blog',
-    buttonText: 'Participar',
-    buttonIcon: '🏆'
+    buttonText: 'PARTICIPAR',
+    buttonIcon: '→'
   }
 ];
 
@@ -72,6 +75,8 @@ function HeroSection() {
       
       {/* Contenido dinámico del slide actual */}
       <div className="hero-container">
+        <span className="hero-tag">{currentContent.tag}</span>
+        
         <h1 className="hero-title">
           <span className="hero-accent">{currentContent.title}</span>
         </h1>
