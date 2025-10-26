@@ -11,7 +11,7 @@ const heroSlides = [
     title: 'LEVEL-UP GAMER',
     subtitle: 'Descubre los mejores accesorios y periféricos gaming de última generación',
     primaryBtn: { text: '🎮 Explorar Catálogo', link: '/productos' },
-    secondaryBtn: { text: '🔥 Ver Ofertas', link: '/ofertas' }
+    secondaryBtn: null
   },
   {
     id: 2,
