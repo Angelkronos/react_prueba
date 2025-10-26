@@ -28,7 +28,7 @@ const heroSlides = [
     tag: '🏆 EVENTOS GAMER',
     title: 'TORNEOS Y PREMIOS',
     subtitle: 'Participa en nuestros torneos exclusivos y gana increíbles premios gaming',
-    primaryBtn: { text: '🎯 Inscribirse', link: '/blog' },
+    primaryBtn: { text: '🎯 Inscribirse', link: '/torneos' },
     secondaryBtn: null
   }
 ];

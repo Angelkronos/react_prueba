@@ -12,6 +12,7 @@ import { homeLoader } from './loaders/home'
 import { NewProduct } from './pages/products'
 import BlogList from './pages/blog'
 import BlogPost from './pages/blog/BlogPost'
+import Torneos from './pages/blog/Torneos'
 import ProtectedRoute from './components/ProtectedRoute'
 import Contacto from './pages/Contacto'
 import Terminos from './pages/Terminos'
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
             Component: BlogPost,
           }
         ]
+      },
+      {
+        path: "torneos",
+        Component: Torneos,
       },
       {
         path: "ayuda",

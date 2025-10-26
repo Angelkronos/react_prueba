@@ -1,0 +1,243 @@
+/* Página de Torneos */
+.torneos-page {
+  min-height: 100vh;
+  padding: 6rem 2rem 4rem;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a001a 100%);
+}
+
+/* Header */
+.torneos-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.torneos-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #39ff14;
+  text-shadow: 
+    0 0 10px #39ff14,
+    0 0 20px #39ff14,
+    0 0 30px #39ff14;
+  margin-bottom: 1rem;
+  animation: neonGlow 2s ease-in-out infinite alternate;
+}
+
+.torneos-subtitle {
+  font-size: 1.2rem;
+  color: #cccccc;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Grid de Torneos */
+.torneos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Tarjeta de Torneo */
+.torneo-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a0a2a 100%);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(57, 255, 20, 0.1);
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+.torneo-card:hover {
+  transform: translateY(-10px);
+  border-color: #39ff14;
+  box-shadow: 
+    0 10px 40px rgba(57, 255, 20, 0.3),
+    0 0 20px rgba(57, 255, 20, 0.2);
+}
+
+/* Imagen del Torneo */
+.torneo-image-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.torneo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.torneo-card:hover .torneo-image {
+  transform: scale(1.1);
+}
+
+.torneo-category {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(57, 255, 20, 0.9);
+  color: #000;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Contenido de la Tarjeta */
+.torneo-content {
+  padding: 1.5rem;
+}
+
+.torneo-date {
+  font-size: 0.9rem;
+  color: #ff00a8;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.torneo-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.torneo-excerpt {
+  color: #cccccc;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Botón de Inscripción */
+.torneo-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-inscribirse {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #39ff14 0%, #1e90ff 100%);
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(57, 255, 20, 0.4);
+}
+
+.btn-inscribirse:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 6px 25px rgba(57, 255, 20, 0.6),
+    0 0 30px rgba(30, 144, 255, 0.5);
+}
+
+.btn-inscribirse:active {
+  transform: scale(0.98);
+}
+
+/* No hay torneos */
+.no-torneos {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #cccccc;
+  font-size: 1.2rem;
+}
+
+.no-torneos p {
+  margin: 1rem 0;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes neonGlow {
+  0% {
+    text-shadow: 
+      0 0 10px #39ff14,
+      0 0 20px #39ff14,
+      0 0 30px #39ff14;
+  }
+  100% {
+    text-shadow: 
+      0 0 20px #39ff14,
+      0 0 30px #39ff14,
+      0 0 40px #39ff14,
+      0 0 60px #00ff88;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .torneos-page {
+    padding: 5rem 1rem 3rem;
+  }
+
+  .torneos-title {
+    font-size: 2.5rem;
+  }
+
+  .torneos-subtitle {
+    font-size: 1rem;
+  }
+
+  .torneos-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .torneo-image-container {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .torneos-title {
+    font-size: 2rem;
+  }
+
+  .torneo-name {
+    font-size: 1.2rem;
+  }
+
+  .btn-inscribirse {
+    font-size: 0.9rem;
+    padding: 0.85rem 1.2rem;
+  }
+}
