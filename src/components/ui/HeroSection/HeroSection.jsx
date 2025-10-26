@@ -19,7 +19,7 @@ const heroSlides = [
     tag: '💥 DESCUENTOS EXCLUSIVOS',
     title: 'DESCUENTOS DUOC UC',
     subtitle: 'Estudiantes obtienen hasta 20% de descuento adicional en accesorios gaming',
-    primaryBtn: { text: '🎓 Ver Beneficio', link: '/descuentos' },
+    primaryBtn: { text: '🎓 Ver Beneficio', link: '/ofertas' },
     secondaryBtn: { text: '📱 Más Info', link: '/contacto' }
   },
   {
