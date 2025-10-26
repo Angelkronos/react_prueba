@@ -40,11 +40,11 @@ function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const navigate = useNavigate();
 
-  // Cambiar slide automáticamente cada 6 segundos
+  // Cambiar slide automáticamente cada 7 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 6000);
+    }, 7000);
 
     return () => clearInterval(interval);
   }, []);
