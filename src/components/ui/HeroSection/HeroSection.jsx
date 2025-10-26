@@ -11,7 +11,7 @@ export default function HeroSection() {
       role="banner" 
       aria-label="Sección principal de Level-Up Gamer"
       style={{
-        backgroundImage: 'url(/assets/images/young-female-gamer-playing-strategy-260nw-2320625533.webp)',
+        backgroundImage: 'url(https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
