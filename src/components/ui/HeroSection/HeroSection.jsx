@@ -55,7 +55,7 @@ export default function HeroSection() {
         onLoadedData={handleVideoLoad}
         onError={handleVideoError}
       >
-        <source src="/assets/videos/videeeo.webm" type="video/webm" />
+        <source src="/assets/videos/videeeo.mp4" type="video/mp4" />
         Tu navegador no soporta el elemento de video.
       </video>
 
