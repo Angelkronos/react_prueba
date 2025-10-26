@@ -1,4 +1,4 @@
-/* Hero Section con video de fondo */
+/* Hero Section con carrusel de fondo */
 .hero-section {
   position: relative;
   width: 100%;
@@ -10,32 +10,23 @@
   background: #000;
 }
 
-/* Video de fondo con cobertura total y optimización de rendimiento */
-.hero-video {
+/* Imagen de fondo con transición suave */
+.hero-background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   z-index: 0;
-  opacity: 1; /* Siempre visible */
-  transition: opacity 0.8s ease-in-out;
+  transition: background-image 1s ease-in-out;
   /* Optimizaciones de rendimiento */
-  will-change: opacity;
+  will-change: background-image;
   transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-}
-
-/* Estado inicial del video (visible desde el inicio) */
-.hero-video.video-hidden {
-  opacity: 0.5; /* Semi-transparente mientras carga */
-}
-
-/* Estado visible del video (completamente opaco) */
-.hero-video.video-visible {
-  opacity: 1;
 }
 
 /* Overlay degradado radial semitransparente */
@@ -56,8 +47,26 @@
   z-index: 2;
   text-align: center;
   padding: 2rem;
-  animation: fadeIn 1.5s ease-in-out;
+  animation: fadeInSlide 1s ease-in-out;
   transform: translateZ(0);
+}
+
+/* Tag destacado arriba del título */
+.hero-tag {
+  display: inline-block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #39ff14;
+  background: rgba(57, 255, 20, 0.1);
+  border: 2px solid #39ff14;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+  animation: pulse 2s ease-in-out infinite;
 }
 
 /* Título neón verde con animación de brillo optimizada */
@@ -228,8 +237,67 @@
   }
 
   .scroll-down {
-    font-size: 2rem;
-    bottom: 1.5rem;
+    font-size: 1.8rem;
+    bottom: 1rem;
+  }
+}
+
+/* ===== INDICADORES DE CARRUSEL ===== */
+.hero-indicators {
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 3;
+}
+
+.hero-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.hero-indicator:hover {
+  background: rgba(57, 255, 20, 0.5);
+  border-color: #39ff14;
+  transform: scale(1.2);
+}
+
+.hero-indicator.active {
+  background: #39ff14;
+  border-color: #39ff14;
+  width: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
+}
+
+/* ===== ANIMACIONES ADICIONALES ===== */
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(57, 255, 20, 0.5);
   }
 }
 
