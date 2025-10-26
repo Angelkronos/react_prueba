@@ -29,7 +29,7 @@ const heroSlides = [
     title: 'TORNEOS Y PREMIOS',
     subtitle: 'Participa en nuestros torneos exclusivos y gana increíbles premios gaming',
     primaryBtn: { text: '🎯 Inscribirse', link: '/blog' },
-    secondaryBtn: { text: '🎮 Ver Torneos', link: '/productos' }
+    secondaryBtn: null
   }
 ];
 
@@ -92,13 +92,15 @@ export default function HeroSection() {
           >
             {currentSlideData.primaryBtn.text}
           </button>
-          <button 
-            className="hero-btn hero-btn-secondary"
-            onClick={() => navigate(currentSlideData.secondaryBtn.link)}
-            aria-label={currentSlideData.secondaryBtn.text}
-          >
-            {currentSlideData.secondaryBtn.text}
-          </button>
+          {currentSlideData.secondaryBtn && (
+            <button 
+              className="hero-btn hero-btn-secondary"
+              onClick={() => navigate(currentSlideData.secondaryBtn.link)}
+              aria-label={currentSlideData.secondaryBtn.text}
+            >
+              {currentSlideData.secondaryBtn.text}
+            </button>
+          )}
         </div>
       </div>
 
