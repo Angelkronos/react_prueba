@@ -42,7 +42,7 @@ export default function HeroSection() {
       role="banner" 
       aria-label="Video promocional de Level-Up Gamer"
     >
-      {/* Video de fondo con transición suave */}
+      {/* Video de fondo optimizado para rendimiento */}
       <video
         ref={videoRef}
         className={`hero-video ${videoLoaded ? 'video-visible' : 'video-hidden'}`}
@@ -50,10 +50,12 @@ export default function HeroSection() {
         loop
         muted
         playsInline
+        preload="auto"
+        poster="/assets/images/hero.jpg"
         onLoadedData={handleVideoLoad}
         onError={handleVideoError}
       >
-        <source src="/assets/videos/hero-bg.mp4" type="video/mp4" />
+        <source src="/assets/videos/videeeo.webm" type="video/webm" />
         Tu navegador no soporta el elemento de video.
       </video>
 

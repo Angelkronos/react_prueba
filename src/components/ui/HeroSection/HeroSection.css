@@ -10,7 +10,7 @@
   background: #000;
 }
 
-/* Video de fondo con cobertura total */
+/* Video de fondo con cobertura total y optimización de rendimiento */
 .hero-video {
   position: absolute;
   top: 0;
@@ -20,6 +20,11 @@
   object-fit: cover;
   z-index: 0;
   transition: opacity 0.8s ease-in-out;
+  /* Optimizaciones de rendimiento */
+  will-change: opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Estado inicial del video (oculto) */
@@ -44,16 +49,17 @@
   pointer-events: none;
 }
 
-/* Contenido central */
+/* Contenido central con optimización */
 .hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
   padding: 2rem;
   animation: fadeIn 1.5s ease-in-out;
+  transform: translateZ(0);
 }
 
-/* Título neón verde con animación de brillo */
+/* Título neón verde con animación de brillo optimizada */
 .hero-title {
   font-family: 'Orbitron', sans-serif;
   font-size: 4rem;
@@ -66,6 +72,7 @@
     0 0 40px #00ff88;
   margin-bottom: 1rem;
   animation: neonGlow 2s ease-in-out infinite alternate;
+  will-change: text-shadow;
 }
 
 /* Subtítulo */
