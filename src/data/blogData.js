@@ -67,8 +67,6 @@ Con estos elementos, no solo mejorarás tu rendimiento, sino que disfrutarás ca
   {
     id: 3,
     title: "Torneos y eventos gaming de octubre",
-    id: 3,
-    title: "Torneos y eventos gaming de octubre",
     category: "Eventos",
     date: "2025-10-15",
     image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80",
