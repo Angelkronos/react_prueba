@@ -77,11 +77,57 @@
   padding: var(--spacing-3xl) var(--spacing-lg);
   text-align: center;
   z-index: 2;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Etiqueta dinámica del Hero */
+.hero-tag {
+  display: inline-block;
+  background: rgba(0, 255, 136, 0.15);
+  border: 2px solid #00ff88;
+  color: #00ff88;
+  font-family: var(--font-display), 'Orbitron', sans-serif;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 12px;
+  margin-bottom: var(--spacing-lg);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 
+    0 0 15px rgba(0, 255, 136, 0.5),
+    0 0 30px rgba(0, 255, 136, 0.3);
+  animation: tagPulse 2s ease-in-out infinite, fadeInDown 0.6s ease-out;
+  backdrop-filter: blur(5px);
+}
+
+@keyframes tagPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 15px rgba(0, 255, 136, 0.5),
+      0 0 30px rgba(0, 255, 136, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 25px rgba(0, 255, 136, 0.7),
+      0 0 45px rgba(0, 255, 136, 0.5);
+  }
 }
 
 .hero-title {
   font-family: var(--font-display), 'Orbitron', sans-serif;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 900;
   color: var(--white);
   margin: 0 0 var(--spacing-xl) 0;
@@ -139,13 +185,13 @@
 
 .hero-subtitle {
   font-family: var(--font-primary), 'Roboto', sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   color: var(--gray-200);
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto var(--spacing-3xl);
-  line-height: 1.6;
+  line-height: 1.7;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
-  font-weight: 300;
+  font-weight: 400;
   animation: fadeInUp 0.8s ease-out 0.2s backwards;
 }
 

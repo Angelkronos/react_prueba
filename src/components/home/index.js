@@ -1,1 +1,1 @@
-export { default as Hero } from './Hero';
+// Hero component removed - using HeroSection from components/layout instead

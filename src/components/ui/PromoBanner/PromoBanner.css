@@ -1,0 +1,139 @@
+/* Banner promocional DUOC */
+.promo-banner {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: 
+    linear-gradient(135deg, #1a001a 0%, #000033 50%, #001a1a 100%),
+    url('/assets/images/promo-bg.jpg') center/cover no-repeat;
+  background-blend-mode: overlay;
+  overflow: hidden;
+  padding: 3rem 2rem;
+}
+
+/* Overlay degradado */
+.promo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(26, 0, 26, 0.6) 100%);
+  z-index: 0;
+}
+
+/* Contenido del banner */
+.promo-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+/* Título del banner */
+.promo-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #39ff14;
+  text-shadow: 
+    0 0 10px #39ff14,
+    0 0 20px #00ff88;
+  margin-bottom: 1rem;
+}
+
+/* Descripción */
+.promo-description {
+  font-size: 1.2rem;
+  color: #d4d4d4;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Botón del banner */
+.promo-btn {
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #ff00a8 0%, #ff0066 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 15px rgba(255, 0, 168, 0.4),
+    0 0 20px rgba(255, 0, 102, 0.3);
+  transition: all 0.3s ease;
+}
+
+.promo-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 6px 25px rgba(255, 0, 168, 0.6),
+    0 0 30px rgba(255, 0, 102, 0.5);
+  background: linear-gradient(135deg, #ff0066 0%, #ff00a8 100%);
+}
+
+/* Animación fade-in desde abajo */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Tablet */
+@media (max-width: 768px) {
+  .promo-banner {
+    min-height: 250px;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .promo-title {
+    font-size: 2rem;
+  }
+
+  .promo-description {
+    font-size: 1.1rem;
+  }
+
+  .promo-btn {
+    padding: 0.9rem 2.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Responsive Mobile */
+@media (max-width: 480px) {
+  .promo-banner {
+    min-height: 200px;
+    padding: 2rem 1rem;
+  }
+
+  .promo-title {
+    font-size: 1.5rem;
+  }
+
+  .promo-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .promo-btn {
+    width: 100%;
+    max-width: 280px;
+    padding: 0.85rem 2rem;
+    font-size: 0.95rem;
+  }
+}

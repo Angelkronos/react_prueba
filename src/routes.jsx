@@ -13,6 +13,11 @@ import { NewProduct } from './pages/products'
 import BlogList from './pages/blog'
 import BlogPost from './pages/blog/BlogPost'
 import ProtectedRoute from './components/ProtectedRoute'
+import Contacto from './pages/Contacto'
+import Terminos from './pages/Terminos'
+import Privacidad from './pages/Privacidad'
+import PromoDuoc from './pages/ofertas/PromoDuoc'
+import DescuentoDetalle from './pages/ofertas/DescuentoDetalle'
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +84,26 @@ export const router = createBrowserRouter([
       {
         path: "ayuda",
         Component: Ayuda,
+      },
+      {
+        path: "ofertas",
+        Component: PromoDuoc,
+      },
+      {
+        path: "descuentos/:tipo",
+        Component: DescuentoDetalle,
+      },
+      {
+        path: "contacto",
+        Component: Contacto,
+      },
+      {
+        path: "terminos",
+        Component: Terminos,
+      },
+      {
+        path: "privacidad",
+        Component: Privacidad,
       },
       {
         path: "*",

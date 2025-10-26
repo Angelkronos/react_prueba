@@ -1,46 +1,27 @@
-import Banner from '../../components/banner';
-import { HeroSection } from '../../components/layout';
-// import { Hero } from '../../components/home'; // ← Este parecía duplicado
+import { useEffect } from 'react';
+import HeroSection from '../../components/ui/HeroSection';
 import { NewsSection, SocialBar, Newsletter } from '../../components/marketing';
-// import { PromoCarousel } from '../../components/marketing'; // ← Sección con "PC Gaming Extremos", "Consolas Next Gen", etc.
 import { FeaturedProducts } from '../../components/products';
 import CategoriesGrid from '../../components/categories';
 import { QuickPanel } from '../../components/user';
 import './Home.css';
 
 function Home() {
+  // Reset scroll al cargar la página
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="home-page">
-      {/* Banner Superior */}
-      <Banner />
-
-      {/* Hero Section con Carrusel - PRINCIPAL */}
+    <main className="home-page">
       <HeroSection />
-
-      {/* Sección REMOVIDA: PromoCarousel con "PC Gaming Extremos", "Consolas Next Gen", "Setup Gamer", etc. */}
-      {/* <PromoCarousel /> */}
-
-      {/* Productos Destacados */}
       <FeaturedProducts />
-
-      {/* Grid de Categorías */}
       <CategoriesGrid />
-
-      {/* Noticias y Eventos Gaming */}
       <NewsSection />
-
-      {/* Redes Sociales */}
       <SocialBar />
-
-      {/* Newsletter */}
       <Newsletter />
-
-      {/* Panel Flotante */}
       <QuickPanel />
-
-      {/* Hero duplicado COMENTADO - parecía repetido */}
-      {/* <Hero /> */}
-    </div>
+    </main>
   );
 }
 

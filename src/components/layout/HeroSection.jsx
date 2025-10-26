@@ -1,70 +1,105 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './HeroSection.css';
+
+// Array de slides con contenido dinámico
+const slides = [
+  {
+    id: 1,
+    image: '/assets/images/hero1.jpg',
+    tag: '🔥 NUEVAS OFERTAS',
+    title: 'ACCESORIOS PRO',
+    subtitle: 'Hasta 50% de descuento en juegos seleccionados. ¡Mejora tu setup con los mejores periféricos!',
+    link: '/productos',
+    buttonText: 'COMPRAR AHORA',
+    buttonIcon: '→'
+  },
+  {
+    id: 2,
+    image: '/assets/images/chica.jpg',
+    tag: '🎓 DESCUENTO DUOC UC',
+    title: 'BENEFICIO ESTUDIANTIL',
+    subtitle: 'Estudiantes obtienen 20% adicional en accesorios gaming. Presenta tu credencial universitaria.',
+    link: '/productos',
+    buttonText: 'VER BENEFICIO',
+    buttonIcon: '→'
+  },
+  {
+    id: 3,
+    image: '/assets/images/hero3.jpg',
+    tag: '🎮 EVENTOS GAMER',
+    title: 'COMPITE Y GANA PREMIOS',
+    subtitle: 'Inscríbete en nuestros torneos exclusivos y demuestra tus habilidades. ¡Premios increíbles te esperan!',
+    link: '/blog',
+    buttonText: 'PARTICIPAR',
+    buttonIcon: '→'
+  }
+];
 
 function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate = useNavigate();
 
-  // Array de imágenes del carrusel
-  const heroImages = [
-    '/assets/images/hero1.jpg',
-    '/assets/images/chica.jpg',
-    '/assets/images/hero3.jpg'
-  ];
-
-  // Cambiar imagen automáticamente cada 5 segundos
+  // Cambiar slide automáticamente cada 7 segundos
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % heroImages.length);
-    }, 5000);
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    }, 7000);
 
     return () => clearInterval(interval);
-  }, [heroImages.length]);
+  }, []);
+
+  const currentContent = slides[currentSlide];
+
+  const handleNavigate = () => {
+    navigate(currentContent.link);
+  };
 
   return (
     <section className="hero-section">
-      {/* Carrusel de imágenes de fondo */}
+      {/* Carrusel de imágenes de fondo con transición suave */}
       <div className="hero-carousel">
-        {heroImages.map((image, index) => (
+        {slides.map((slide, index) => (
           <div
-            key={index}
+            key={slide.id}
             className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
-            style={{ backgroundImage: `url(${image})` }}
+            style={{ backgroundImage: `url(${slide.image})` }}
             role="img"
             aria-label={`Hero slide ${index + 1}`}
           />
         ))}
       </div>
 
-      {/* Overlay con degradado morado → negro transparente */}
+      {/* Overlay con degradado */}
       <div className="hero-overlay"></div>
       
-      {/* Contenido fijo sobre el carrusel */}
+      {/* Contenido dinámico del slide actual */}
       <div className="hero-container">
+        <span className="hero-tag">{currentContent.tag}</span>
+        
         <h1 className="hero-title">
-          BIENVENIDO A <span className="hero-accent">LEVEL-UP GAMER</span>
+          <span className="hero-accent">{currentContent.title}</span>
         </h1>
         
         <p className="hero-subtitle">
-          La mejor tienda de videojuegos y accesorios gaming. 
-          Encuentra los últimos lanzamientos, ofertas exclusivas y mucho más.
+          {currentContent.subtitle}
         </p>
         
         <div className="hero-actions">
-          <Link to="/productos" className="hero-btn primary">
-            <span>Explorar Catálogo</span>
-            <span className="btn-icon">🎮</span>
-          </Link>
-          <Link to="/ofertas" className="hero-btn secondary">
-            <span>Ver Ofertas</span>
-            <span className="btn-icon">🔥</span>
-          </Link>
+          <button 
+            onClick={handleNavigate} 
+            className="hero-btn primary"
+            aria-label={currentContent.buttonText}
+          >
+            <span>{currentContent.buttonText}</span>
+            <span className="btn-icon">{currentContent.buttonIcon}</span>
+          </button>
         </div>
       </div>
 
-      {/* Indicadores del carrusel */}
+      {/* Indicadores del carrusel (dots) */}
       <div className="hero-indicators">
-        {heroImages.map((_, index) => (
+        {slides.map((_, index) => (
           <button
             key={index}
             className={`indicator ${index === currentSlide ? 'active' : ''}`}

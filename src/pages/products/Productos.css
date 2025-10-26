@@ -217,12 +217,12 @@
 
 .catalog-layout {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 280px 1fr;
   gap: 2rem;
 }
 
 .catalog-layout:has(.filters-sidebar:not(:empty)) {
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 280px 1fr;
 }
 
 .catalog-layout:not(:has(.filters-sidebar)) {
@@ -241,11 +241,14 @@
   width: 100%;
 }
 
+/* Grid optimizado para productos pequeños y centrados */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
   margin-bottom: 2rem;
+  justify-items: center;
+  max-width: 100%;
 }
 
 .no-results {
@@ -326,7 +329,8 @@
   }
 
   .products-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
   }
 
   .no-results {

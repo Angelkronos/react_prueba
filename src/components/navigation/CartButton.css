@@ -1,0 +1,95 @@
+/* Botón del Carrito - Estilo Gamer */
+.cart-btn {
+  position: relative;
+  background: linear-gradient(135deg, #1a0030, #0a0044);
+  border: 2px solid transparent;
+  border-radius: 15px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.cart-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 25px #00ff88, 0 0 50px #00b3ff;
+  border-color: #00ff88;
+  background: linear-gradient(135deg, #2a0050, #0a0066);
+}
+
+.cart-btn:active {
+  transform: scale(0.97);
+}
+
+/* Emoji del carrito */
+.cart-emoji {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 6px #00b3ff);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.cart-btn:hover .cart-emoji {
+  filter: drop-shadow(0 0 10px #00ff88) drop-shadow(0 0 15px #00b3ff);
+  transform: scale(1.1);
+}
+
+/* Badge del contador */
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #00ff88;
+  color: #000000;
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  border-radius: 50%;
+  padding: 4px 7px;
+  font-size: 0.7rem;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px #00ff88;
+  animation: pulse 2s infinite;
+}
+
+/* Animación de pulso para el badge */
+@keyframes pulse {
+  0% { 
+    box-shadow: 0 0 10px #00ff88;
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 20px #00b3ff, 0 0 30px #00ff88;
+    transform: scale(1.05);
+  }
+  100% { 
+    box-shadow: 0 0 10px #00ff88;
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cart-btn {
+    padding: 8px 12px;
+  }
+
+  .cart-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .cart-badge {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+    min-width: 18px;
+    height: 18px;
+  }
+}
