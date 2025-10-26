@@ -104,11 +104,6 @@ export default function HeroSection() {
           />
         ))}
       </div>
-
-      {/* Scroll Indicator */}
-      <a href="#featured-products" className="scroll-down" aria-label="Desplazarse al contenido principal">
-        ⬇️
-      </a>
     </section>
   );
 }
