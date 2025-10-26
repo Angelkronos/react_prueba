@@ -204,7 +204,123 @@
   gap: 20px;
 }
 
-.info-card {
+/* Tarjetas de contacto interactivas */
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #ffffff;
+  background: rgba(15, 15, 30, 0.85);
+  border: 2px solid rgba(0, 255, 157, 0.4);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.contact-card:hover::before {
+  left: 100%;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 
+    0 0 25px rgba(0, 255, 157, 0.5),
+    0 10px 40px rgba(0, 255, 157, 0.3);
+  background: rgba(20, 40, 60, 0.9);
+  border-color: rgba(0, 255, 157, 0.8);
+}
+
+.contact-card:active {
+  transform: translateY(-4px) scale(1.01);
+}
+
+.contact-card .info-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 157, 0.3));
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover .info-icon {
+  filter: drop-shadow(0 0 20px rgba(0, 255, 157, 0.6));
+  transform: scale(1.1);
+}
+
+.contact-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ff99;
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+.contact-card p {
+  color: #b8b8c4;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 5px 0 0.5rem 0;
+}
+
+/* Badge de estado */
+.status {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-family: 'Orbitron', sans-serif;
+  border: 1px solid;
+  transition: all 0.3s ease;
+}
+
+.status.success {
+  color: #00ff9d;
+  background: rgba(0, 255, 157, 0.15);
+  border-color: rgba(0, 255, 157, 0.4);
+  box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+}
+
+.status.warning {
+  color: #ffa500;
+  background: rgba(255, 165, 0, 0.15);
+  border-color: rgba(255, 165, 0, 0.4);
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.2);
+}
+
+.contact-card:hover .status.success {
+  background: rgba(0, 255, 157, 0.25);
+  box-shadow: 0 0 15px rgba(0, 255, 157, 0.4);
+}
+
+.contact-card:hover .status.warning {
+  background: rgba(255, 165, 0, 0.25);
+  box-shadow: 0 0 15px rgba(255, 165, 0, 0.4);
+}
+
+/* Fallback para tarjetas no interactivas (si existen) */
+.info-card:not(.contact-card) {
   background: rgba(15, 15, 25, 0.8);
   border: 2px solid rgba(0, 255, 153, 0.2);
   border-radius: 12px;
@@ -213,7 +329,7 @@
   transition: all 0.3s ease;
 }
 
-.info-card:hover {
+.info-card:not(.contact-card):hover {
   border-color: rgba(0, 255, 153, 0.5);
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 255, 153, 0.15);
@@ -222,15 +338,9 @@
 .info-icon {
   font-size: 2.5rem;
   margin-bottom: 15px;
-  filter: grayscale(1);
-  transition: filter 0.3s ease;
 }
 
-.info-card:hover .info-icon {
-  filter: grayscale(0);
-}
-
-.info-card h3 {
+.info-card:not(.contact-card) h3 {
   font-family: 'Orbitron', sans-serif;
   color: #00ff99;
   font-size: 1.2rem;
@@ -239,7 +349,7 @@
   letter-spacing: 1px;
 }
 
-.info-card p {
+.info-card:not(.contact-card) p {
   color: #b8b8c4;
   font-size: 0.95rem;
   line-height: 1.6;

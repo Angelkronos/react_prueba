@@ -101,26 +101,55 @@ function Contacto() {
             )}
           </div>
 
-          {/* Información de contacto */}
+          {/* Opciones de contacto interactivas */}
           <div className="contacto-info">
-            <div className="info-card">
+            <a 
+              href="https://wa.me/56912345678?text=Hola%2C%20necesito%20ayuda%20con..." 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="info-card contact-card"
+              aria-label="Contactar por WhatsApp - Chat en vivo disponible 24/7"
+            >
+              <div className="info-icon">💬</div>
+              <h3>Chat en Vivo</h3>
+              <p>WhatsApp</p>
+              <span className="status success">DISPONIBLE 24/7</span>
+            </a>
+
+            <a 
+              href="mailto:soporte@levelupgamer.com?subject=Consulta%20desde%20la%20web&body=Hola%2C%0A%0A" 
+              className="info-card contact-card"
+              aria-label="Enviar correo electrónico al equipo de soporte"
+            >
               <div className="info-icon">📧</div>
               <h3>Email</h3>
               <p>soporte@levelupgamer.com</p>
-            </div>
+              <span className="status success">RESPUESTA EN 24H</span>
+            </a>
 
-            <div className="info-card">
-              <div className="info-icon">💬</div>
+            <a 
+              href="tel:+18001234567" 
+              className="info-card contact-card"
+              aria-label="Llamar al servicio de atención al cliente"
+            >
+              <div className="info-icon">�</div>
+              <h3>Teléfono</h3>
+              <p>+1 (800) 123-4567</p>
+              <span className="status warning">LUN-VIE 9AM-6PM</span>
+            </a>
+
+            <a 
+              href="https://discord.gg/levelupgamer" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="info-card contact-card"
+              aria-label="Unirse a nuestra comunidad oficial de Discord"
+            >
+              <div className="info-icon">🎮</div>
               <h3>Discord</h3>
-              <p>Level-Up Gamer Community</p>
-            </div>
-
-            <div className="info-card">
-              <div className="info-icon">⏰</div>
-              <h3>Horario</h3>
-              <p>Lun - Vie: 9:00 - 18:00</p>
-              <p>Sáb: 10:00 - 14:00</p>
-            </div>
+              <p>Comunidad oficial</p>
+              <span className="status success">SIEMPRE ACTIVO</span>
+            </a>
           </div>
         </div>
       </div>

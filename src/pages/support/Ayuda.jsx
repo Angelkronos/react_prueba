@@ -56,7 +56,9 @@ function Ayuda() {
       description: 'Respuesta inmediata',
       status: 'Disponible 24/7',
       action: 'Iniciar Chat',
-      available: true
+      available: true,
+      href: 'https://wa.me/56912345678?text=Hola%2C%20necesito%20ayuda%20con...',
+      target: '_blank'
     },
     {
       id: 2,
@@ -65,7 +67,9 @@ function Ayuda() {
       description: 'soporte@levelupgamer.com',
       status: 'Respuesta en 24h',
       action: 'Enviar Email',
-      available: true
+      available: true,
+      href: 'mailto:soporte@levelupgamer.com?subject=Consulta%20desde%20el%20centro%20de%20ayuda',
+      target: '_self'
     },
     {
       id: 3,
@@ -74,16 +78,20 @@ function Ayuda() {
       description: '+1 (800) 123-4567',
       status: 'Lun-Vie 9am-6pm',
       action: 'Llamar Ahora',
-      available: true
+      available: true,
+      href: 'tel:+18001234567',
+      target: '_self'
     },
     {
       id: 4,
-      icon: '💬',
+      icon: '🎮',
       title: 'Discord',
       description: 'Comunidad oficial',
       status: 'Siempre activo',
       action: 'Unirse',
-      available: true
+      available: true,
+      href: 'https://discord.gg/levelupgamer',
+      target: '_blank'
     }
   ];
 
@@ -144,18 +152,22 @@ function Ayuda() {
           </p>
           <div className="contact-grid">
             {contactMethods.map((method) => (
-              <div
+              <a
                 key={method.id}
+                href={method.href}
+                target={method.target}
+                rel={method.target === '_blank' ? 'noopener noreferrer' : undefined}
                 className={`contact-card ${method.available ? 'available' : 'unavailable'}`}
+                aria-label={`${method.action} - ${method.title}: ${method.description}`}
               >
                 <span className="contact-icon">{method.icon}</span>
                 <h3 className="contact-title">{method.title}</h3>
                 <p className="contact-description">{method.description}</p>
                 <span className="contact-status">{method.status}</span>
-                <button className="contact-btn">
+                <span className="contact-btn">
                   {method.action}
-                </button>
-              </div>
+                </span>
+              </a>
             ))}
           </div>
         </div>
