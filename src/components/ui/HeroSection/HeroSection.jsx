@@ -6,34 +6,46 @@ export default function HeroSection() {
   const navigate = useNavigate();
   const videoRef = useRef(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    // Forzar reproducción del video cuando el componente se monta
-    if (videoRef.current) {
-      // Esperar un momento para que el DOM esté listo
-      const timer = setTimeout(() => {
-        videoRef.current.play()
-          .then(() => {
-            console.log('✅ Video reproduciéndose correctamente');
-          })
-          .catch(error => {
-            console.error('❌ Error al reproducir video:', error);
-            console.log('Verifica que el archivo exista en: /public/assets/videos/hero-bg.mp4');
-          });
-      }, 100);
+    const video = videoRef.current;
+    if (!video) return;
 
-      return () => clearTimeout(timer);
+    // Intentar reproducir el video una vez que esté listo
+    const playVideo = async () => {
+      try {
+        await video.play();
+        console.log('✅ Video reproduciéndose correctamente');
+      } catch (error) {
+        console.warn('⚠️ Autoplay bloqueado o error:', error);
+        // El usuario deberá interactuar con la página para iniciar el video
+      }
+    };
+
+    // Esperar a que el video esté listo
+    if (video.readyState >= 3) {
+      playVideo();
+    } else {
+      video.addEventListener('canplay', playVideo, { once: true });
     }
+
+    return () => {
+      video.removeEventListener('canplay', playVideo);
+    };
   }, []);
 
   const handleVideoLoad = () => {
-    console.log('📹 Video cargado, activando transición fade-in...');
+    console.log('📹 Video cargado exitosamente');
     setVideoLoaded(true);
+    setHasError(false);
   };
 
   const handleVideoError = (e) => {
     console.error('❌ Error al cargar el video:', e);
-    console.log('Ruta intentada: /assets/videos/hero-bg.mp4');
+    console.log('Verifica que exista: /public/assets/videos/hero-bg.mp4');
+    setHasError(true);
+    setVideoLoaded(true); // Mostrar fallback
   };
 
   return (
@@ -42,20 +54,27 @@ export default function HeroSection() {
       role="banner" 
       aria-label="Video promocional de Level-Up Gamer"
     >
-      {/* Video de fondo con transición suave */}
-      <video
-        ref={videoRef}
-        className={`hero-video ${videoLoaded ? 'video-visible' : 'video-hidden'}`}
-        autoPlay
-        loop
-        muted
-        playsInline
-        onLoadedData={handleVideoLoad}
-        onError={handleVideoError}
-      >
-        <source src="/assets/videos/hero-bg.mp4" type="video/mp4" />
-        Tu navegador no soporta el elemento de video.
-      </video>
+      {/* Video de fondo con manejo de errores */}
+      {!hasError && (
+        <video
+          ref={videoRef}
+          className={`hero-video ${videoLoaded ? 'video-visible' : 'video-hidden'}`}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          onLoadedData={handleVideoLoad}
+          onError={handleVideoError}
+        >
+          <source src="/assets/videos/hero-bg.mp4" type="video/mp4" />
+        </video>
+      )}
+
+      {/* Fallback si hay error con el video */}
+      {hasError && (
+        <div className="hero-fallback-bg"></div>
+      )}
 
       {/* Overlay degradado radial */}
       <div className="hero-overlay"></div>

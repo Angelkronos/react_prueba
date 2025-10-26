@@ -3,6 +3,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
+  min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,13 +14,27 @@
 /* Video de fondo con cobertura total */
 .hero-video {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  z-index: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+/* Fallback background si el video falla */
+.hero-fallback-bg {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background: linear-gradient(135deg, #1a001a 0%, #000033 50%, #001a1a 100%);
   z-index: 0;
-  transition: opacity 0.8s ease-in-out;
 }
 
 /* Estado inicial del video (oculto) */
@@ -199,8 +214,8 @@
 /* Responsive Tablet */
 @media (max-width: 768px) {
   .hero-section {
-    min-height: 80vh;
-    height: auto;
+    height: 100vh;
+    min-height: 600px;
   }
 
   .hero-title {
@@ -226,7 +241,8 @@
 /* Responsive Mobile */
 @media (max-width: 480px) {
   .hero-section {
-    min-height: 70vh;
+    height: 100vh;
+    min-height: 500px;
   }
 
   .hero-title {
@@ -255,10 +271,4 @@
     font-size: 1.8rem;
     bottom: 1rem;
   }
-
-  /* Ocultar video en móviles lentos (opcional, solo si hay problemas de rendimiento) */
-  /* Descomentar la siguiente línea si necesitas optimización extrema */
-  /* .hero-video {
-    display: none;
-  } */
 }
