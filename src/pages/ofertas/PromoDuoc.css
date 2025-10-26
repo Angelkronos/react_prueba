@@ -65,30 +65,39 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
   max-width: 1400px;
   margin: 0 auto 3rem;
+  justify-items: center;
+  align-items: stretch;
   animation: fadeInUp 1s ease-out;
 }
 
 /* Card individual */
 .promo-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 420px;
+  width: 100%;
+  max-width: 280px;
   background: rgba(10, 10, 10, 0.8);
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(57, 255, 20, 0.2);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid rgba(0, 255, 157, 0.3);
+  transition: all 0.3s ease-in-out;
   box-shadow: 
     0 4px 20px rgba(0, 0, 0, 0.5),
     0 0 30px rgba(57, 255, 20, 0.1);
 }
 
 .promo-card:hover {
-  transform: scale(1.05) translateY(-10px);
+  transform: translateY(-6px) scale(1.03);
   border-color: rgba(57, 255, 20, 0.6);
   box-shadow: 
+    0 0 20px rgba(0, 255, 157, 0.4),
     0 8px 40px rgba(0, 0, 0, 0.7),
     0 0 50px rgba(57, 255, 20, 0.4);
 }
@@ -124,9 +133,10 @@
 /* Imagen de la card */
 .card-image-wrapper {
   position: relative;
+  flex: 0 0 220px;
   width: 100%;
-  height: 200px;
   overflow: hidden;
+  border-radius: 12px 12px 0 0;
 }
 
 .card-image {
@@ -137,7 +147,7 @@
 }
 
 .promo-card:hover .card-image {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .card-overlay {
@@ -151,48 +161,64 @@
 
 /* Contenido de la card */
 .card-content {
-  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.8rem;
   text-align: center;
 }
 
 .card-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
   filter: drop-shadow(0 0 10px rgba(57, 255, 20, 0.5));
 }
 
 .card-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.5rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: #39ff14;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
+  min-height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-description {
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: #b0b0b0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   line-height: 1.5;
 }
 
 /* Botón Canjear */
 .btn-canjear {
+  align-self: center;
   width: 100%;
-  padding: 0.9rem 1.5rem;
+  padding: 0.5rem 1.2rem;
+  margin-top: 0.5rem;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   color: #000;
-  background: linear-gradient(135deg, #39ff14 0%, #00b3ff 100%);
+  background: linear-gradient(90deg, #00ffc8, #0080ff);
   border: none;
-  border-radius: 50px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(57, 255, 20, 0.3);
   position: relative;
   overflow: hidden;
+}
+
+.btn-canjear:hover {
+  background: linear-gradient(90deg, #00ff9d, #00bfff);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(57, 255, 20, 0.5);
 }
 
 .btn-canjear::before {
@@ -445,6 +471,14 @@
     gap: 1.5rem;
   }
 
+  .promo-card {
+    height: 400px;
+  }
+
+  .card-image-wrapper {
+    flex: 0 0 200px;
+  }
+
   .modal-content {
     padding: 2rem;
   }
@@ -459,6 +493,24 @@
 }
 
 /* Responsive Mobile */
+@media (max-width: 768px) {
+  .promo-card {
+    height: 380px;
+  }
+
+  .card-image-wrapper {
+    flex: 0 0 180px;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+  }
+
+  .card-description {
+    font-size: 0.8rem;
+  }
+}
+
 @media (max-width: 600px) {
   .promo-duoc {
     padding: 4rem 1rem 2rem;
