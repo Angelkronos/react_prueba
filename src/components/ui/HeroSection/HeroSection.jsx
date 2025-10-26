@@ -1,68 +1,22 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './HeroSection.css';
 
 export default function HeroSection() {
   const navigate = useNavigate();
-  const videoRef = useRef(null);
-  const [videoLoaded, setVideoLoaded] = useState(true); // Cambiado a true para mostrar el video desde el inicio
-
-  useEffect(() => {
-    // Forzar reproducción del video cuando el componente se monta
-    if (videoRef.current) {
-      console.log('🎬 Intentando cargar video desde:', videoRef.current.src);
-      
-      // Esperar un momento para que el DOM esté listo
-      const timer = setTimeout(() => {
-        videoRef.current.play()
-          .then(() => {
-            console.log('✅ Video reproduciéndose correctamente');
-            setVideoLoaded(true);
-          })
-          .catch(error => {
-            console.error('❌ Error al reproducir video:', error);
-            console.log('Verifica que el archivo exista en: /public/assets/videos/videeeo.mp4');
-          });
-      }, 100);
-
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
-  const handleVideoLoad = () => {
-    console.log('📹 Video cargado correctamente desde:', videoRef.current?.currentSrc);
-    setVideoLoaded(true);
-  };
-
-  const handleVideoError = (e) => {
-    console.error('❌ Error al cargar el video:', e);
-    console.error('Ruta intentada:', videoRef.current?.currentSrc);
-    console.log('Archivo esperado: /assets/videos/videeeo.mp4');
-  };
 
   return (
     <section 
       className="hero-section" 
       role="banner" 
-      aria-label="Video promocional de Level-Up Gamer"
+      aria-label="Sección principal de Level-Up Gamer"
+      style={{
+        backgroundImage: 'url(/assets/images/young-female-gamer-playing-strategy-260nw-2320625533.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
     >
-      {/* Video de fondo optimizado para rendimiento */}
-      <video
-        ref={videoRef}
-        className={`hero-video ${videoLoaded ? 'video-visible' : 'video-hidden'}`}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        poster="/assets/images/hero.jpg"
-        onLoadedData={handleVideoLoad}
-        onError={handleVideoError}
-      >
-        <source src="/assets/videos/videeeo.mp4" type="video/mp4" />
-        Tu navegador no soporta el elemento de video.
-      </video>
-
       {/* Overlay degradado radial */}
       <div className="hero-overlay"></div>
 
