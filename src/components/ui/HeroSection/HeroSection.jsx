@@ -18,7 +18,7 @@ export default function HeroSection() {
           })
           .catch(error => {
             console.error('❌ Error al reproducir video:', error);
-            console.log('Verifica que el archivo exista en: /public/assets/videos/hero-bg.mp4');
+            console.log('Verifica que el archivo exista en: /public/assets/videos/videeeo.mp4');
           });
       }, 100);
 
