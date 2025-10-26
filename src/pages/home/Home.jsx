@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Banner from '../../components/banner';
 import { HeroSection } from '../../components/layout';
 import { NewsSection, SocialBar, Newsletter } from '../../components/marketing';
@@ -7,32 +8,22 @@ import { QuickPanel } from '../../components/user';
 import './Home.css';
 
 function Home() {
+  // Reset scroll al cargar la página
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="home-page">
-      {/* Banner Superior */}
+    <main className="home-page">
       <Banner />
-
-      {/* Hero Section con Carrusel */}
       <HeroSection />
-
-      {/* Productos Destacados */}
       <FeaturedProducts />
-
-      {/* Grid de Categorías */}
       <CategoriesGrid />
-
-      {/* Noticias y Eventos Gaming */}
       <NewsSection />
-
-      {/* Redes Sociales */}
       <SocialBar />
-
-      {/* Newsletter */}
       <Newsletter />
-
-      {/* Panel Flotante */}
       <QuickPanel />
-    </div>
+    </main>
   );
 }
 
