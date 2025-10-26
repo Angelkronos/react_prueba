@@ -1,8 +1,6 @@
 import Banner from '../../components/banner';
 import { HeroSection } from '../../components/layout';
-// import { Hero } from '../../components/home'; // ← Este parecía duplicado
 import { NewsSection, SocialBar, Newsletter } from '../../components/marketing';
-// import { PromoCarousel } from '../../components/marketing'; // ← Sección con "PC Gaming Extremos", "Consolas Next Gen", etc.
 import { FeaturedProducts } from '../../components/products';
 import CategoriesGrid from '../../components/categories';
 import { QuickPanel } from '../../components/user';
@@ -14,11 +12,8 @@ function Home() {
       {/* Banner Superior */}
       <Banner />
 
-      {/* Hero Section con Carrusel - PRINCIPAL */}
+      {/* Hero Section con Carrusel */}
       <HeroSection />
-
-      {/* Sección REMOVIDA: PromoCarousel con "PC Gaming Extremos", "Consolas Next Gen", "Setup Gamer", etc. */}
-      {/* <PromoCarousel /> */}
 
       {/* Productos Destacados */}
       <FeaturedProducts />
@@ -37,9 +32,6 @@ function Home() {
 
       {/* Panel Flotante */}
       <QuickPanel />
-
-      {/* Hero duplicado COMENTADO - parecía repetido */}
-      {/* <Hero /> */}
     </div>
   );
 }
