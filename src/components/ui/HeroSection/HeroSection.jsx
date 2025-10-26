@@ -38,7 +38,7 @@ export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Cambiar slide automáticamente cada 5 segundos
+  // Cambiar slide automáticamente cada 4 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       setIsTransitioning(true);
@@ -46,7 +46,7 @@ export default function HeroSection() {
         setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
         setIsTransitioning(false);
       }, 300);
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
