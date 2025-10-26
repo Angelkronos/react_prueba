@@ -21,12 +21,17 @@
   background-position: center;
   background-repeat: no-repeat;
   z-index: 0;
-  transition: background-image 1s ease-in-out;
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
   /* Optimizaciones de rendimiento */
-  will-change: background-image;
-  transform: translateZ(0);
+  will-change: opacity, transform;
+  transform: translateZ(0) scale(1);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+}
+
+.hero-background.transitioning {
+  opacity: 0.7;
+  transform: translateZ(0) scale(1.05);
 }
 
 /* Overlay degradado radial semitransparente */
@@ -49,6 +54,12 @@
   padding: 2rem;
   animation: fadeInSlide 1s ease-in-out;
   transform: translateZ(0);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.hero-content.transitioning {
+  opacity: 0;
+  transform: translateY(-20px);
 }
 
 /* Tag destacado arriba del título */

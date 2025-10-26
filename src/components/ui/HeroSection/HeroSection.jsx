@@ -36,19 +36,28 @@ const heroSlides = [
 export default function HeroSection() {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Cambiar slide automáticamente cada 6 segundos
+  // Cambiar slide automáticamente cada 5 segundos
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 6000);
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+        setIsTransitioning(false);
+      }, 300);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
   // Función para cambiar slide manualmente
   const goToSlide = (index) => {
-    setCurrentSlide(index);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentSlide(index);
+      setIsTransitioning(false);
+    }, 300);
   };
 
   const currentSlideData = heroSlides[currentSlide];
@@ -61,7 +70,7 @@ export default function HeroSection() {
     >
       {/* Imagen de fondo con transición */}
       <div 
-        className="hero-background"
+        className={`hero-background ${isTransitioning ? 'transitioning' : ''}`}
         style={{
           backgroundImage: `url(${currentSlideData.image})`,
         }}
@@ -71,7 +80,7 @@ export default function HeroSection() {
       <div className="hero-overlay"></div>
 
       {/* Contenido central */}
-      <div className="hero-content" key={currentSlide}>
+      <div className={`hero-content ${isTransitioning ? 'transitioning' : ''}`} key={currentSlide}>
         <span className="hero-tag">{currentSlideData.tag}</span>
         <h1 className="hero-title">{currentSlideData.title}</h1>
         <p className="hero-subtitle">{currentSlideData.subtitle}</p>
