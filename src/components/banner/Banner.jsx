@@ -12,6 +12,7 @@ function Banner() {
       subtitle: "Hasta 50% de descuento en juegos seleccionados",
       cta: "Ver Ofertas",
       bgColor: "from-purple",
+      bgImage: "/assets/images/hero1.jpg",
       link: "/productos?categoria=ofertas"
     },
     {
@@ -20,6 +21,7 @@ function Banner() {
       subtitle: "Los últimos títulos AAA disponibles ahora",
       cta: "Explorar",
       bgColor: "from-blue",
+      bgImage: "/assets/images/hero3.jpg",
       link: "/productos?categoria=nuevos"
     },
     {
@@ -28,6 +30,7 @@ function Banner() {
       subtitle: "Mejora tu setup con los mejores periféricos",
       cta: "Comprar Ahora",
       bgColor: "from-pink",
+      bgImage: "/assets/images/chica.jpg",
       link: "/productos?categoria=accesorios"
     }
   ];
@@ -59,7 +62,13 @@ function Banner() {
           <div
             key={slide.id}
             className={`banner-slide ${index === currentSlide ? 'active' : ''} ${slide.bgColor}`}
+            style={{
+              backgroundImage: `url(${slide.bgImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
           >
+            <div className="banner-overlay"></div>
             <div className="banner-content">
               <h1 className="banner-title">{slide.title}</h1>
               <p className="banner-subtitle">{slide.subtitle}</p>

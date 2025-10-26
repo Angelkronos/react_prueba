@@ -43,7 +43,23 @@
   }
 }
 
-/* Fondos dinámicos */
+/* Overlay oscuro para mejorar legibilidad del texto sobre imágenes */
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 26, 0.7) 0%,
+    rgba(26, 11, 46, 0.6) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 1;
+}
+
+/* Fondos dinámicos (fallback si no hay imagen) */
 .banner-slide.from-purple {
   background: linear-gradient(135deg, var(--dark-purple) 0%, var(--cyber-black) 50%, var(--hot-pink) 100%);
 }
