@@ -10,9 +10,9 @@ module.exports = function(config) {
 
     // Lista de archivos / patrones a cargar en el navegador
     files: [
-      'src/**/*.spec.js',
-      'src/**/*.spec.jsx',
-      'tests/**/*.spec.js'
+      { pattern: 'tests/**/*.spec.js', watched: true, included: true, served: true },
+      { pattern: 'src/**/*.spec.js', watched: true, included: true, served: true },
+      { pattern: 'src/**/*.spec.jsx', watched: true, included: true, served: true }
     ],
 
     // Lista de archivos / patrones a excluir
@@ -38,7 +38,10 @@ module.exports = function(config) {
             use: {
               loader: 'babel-loader',
               options: {
-                presets: ['@babel/preset-env', '@babel/preset-react']
+                presets: [
+                  ['@babel/preset-env', { targets: { node: 'current' } }],
+                  ['@babel/preset-react', { runtime: 'automatic' }]
+                ]
               }
             }
           },
@@ -49,17 +52,20 @@ module.exports = function(config) {
         ]
       },
       resolve: {
-        extensions: ['.js', '.jsx']
-      }
-    },
-
-    webpackMiddleware: {
+        extensions: ['.js', '.jsx'],
+        modules: ['node_modules', 'src']
+      },
       stats: 'errors-only'
     },
 
-    // Opciones posibles: 'dots', 'progress'
+    webpackMiddleware: {
+      stats: 'errors-only',
+      noInfo: true
+    },
+
+    // Opciones posibles: 'dots', 'progress', 'spec'
     // Disponibles: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec'],
 
     // Puerto del servidor web
     port: 9876,
@@ -77,6 +83,14 @@ module.exports = function(config) {
     // Navegadores para ejecutar
     // Disponibles: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['ChromeHeadless'],
+
+    // Plugins necesarios
+    plugins: [
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-webpack',
+      'karma-spec-reporter'
+    ],
 
     // Modo Continuous Integration
     // Si es true, Karma captura navegadores, ejecuta tests y sale
