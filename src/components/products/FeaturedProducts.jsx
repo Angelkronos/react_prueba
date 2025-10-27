@@ -5,7 +5,7 @@ import './FeaturedProducts.css';
 function FeaturedProducts() {
   // Obtener productos en oferta del catálogo real
   const allOffers = getOffers();
-  const featuredProducts = allOffers.slice(0, 4).map(product => ({
+  const featuredProducts = allOffers.slice(0, 5).map(product => ({
     id: product.id,
     name: product.name,
     price: product.price,
@@ -16,7 +16,7 @@ function FeaturedProducts() {
   }));
 
   // Si no hay suficientes ofertas, completar con productos mock
-  while (featuredProducts.length < 4) {
+  while (featuredProducts.length < 5) {
     featuredProducts.push({
       id: `mock-${featuredProducts.length}`,
       name: 'Producto Gaming',

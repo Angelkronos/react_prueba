@@ -212,7 +212,7 @@ let productsDatabase = [
     rating: 4.5,
     reviews: 654,
     stock: 12,
-    featured: false,
+    featured: true,
     isOffer: true,
     description: "Silla ergonómica con soporte lumbar y cervical ajustable.",
     specs: ["Cuero PU", "Reclinable 135°", "Cojines ajustables", "Base aluminio"],
