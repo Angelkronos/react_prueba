@@ -45,11 +45,10 @@ function BlogPost() {
         </div>
 
         <div className="blog-post-content">
-          {article.content.split('\n\n').map((paragraph, index) => (
-            <p key={index} className="blog-post-paragraph">
-              {paragraph}
-            </p>
-          ))}
+          <div 
+            className="blog-post-paragraph"
+            dangerouslySetInnerHTML={{ __html: article.content.replace(/\n\n/g, '</p><p>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}
+          />
         </div>
 
         <div className="blog-post-footer">
