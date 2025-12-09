@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Form, Button, Card, ListGroup, Badge, Alert } from 'react-bootstrap';
 import { useCart } from '../../context/CartContext';
 import { CheckoutForm } from '../../components/products';
+import { processWebpayPayment } from '../../services/webpayService';
 import './Checkout.css';
 
 function Checkout() {
@@ -11,6 +12,7 @@ function Checkout() {
   const [discountCode, setDiscountCode] = useState('');
   const [discount, setDiscount] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [paymentError, setPaymentError] = useState(null);
   const [formData, setFormData] = useState({
     // Datos personales
     firstName: '',
@@ -54,45 +56,44 @@ function Checkout() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsProcessing(true);
+    setPaymentError(null);
 
-    // Simulación de procesamiento de pago
-    setTimeout(() => {
-      // Simulación: 90% de probabilidad de éxito
-      const success = Math.random() > 0.1;
-      
-      if (success) {
-        // Guardar orden en localStorage
-        const order = {
-          id: `ORD-${Date.now()}`,
-          date: new Date().toISOString(),
-          items: cart,
-          customer: {
-            name: `${formData.firstName} ${formData.lastName}`,
-            email: formData.email,
-            phone: formData.phone,
-            address: `${formData.address}, ${formData.city}, ${formData.region}`
-          },
-          payment: {
-            method: formData.paymentMethod,
-            card: `**** **** **** ${formData.cardNumber.slice(-4)}`
-          },
-          totals: {
-            subtotal,
-            shipping,
-            discount: discountAmount,
-            total
-          }
-        };
-        
-        localStorage.setItem('last-order', JSON.stringify(order));
-        clearCart();
-        navigate('/compra-exitosa');
-      } else {
-        navigate('/compra-fallida');
-      }
-      
+    try {
+      // Guardar información del cliente antes del pago
+      const orderInfo = {
+        items: cart,
+        customer: {
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phone: formData.phone,
+          address: `${formData.address}, ${formData.city}, ${formData.region}`
+        },
+        totals: {
+          subtotal,
+          shipping,
+          discount: discountAmount,
+          total
+        }
+      };
+      localStorage.setItem('pending-order-info', JSON.stringify(orderInfo));
+
+      // Obtener userId (puedes obtenerlo del contexto de autenticación)
+      const userId = localStorage.getItem('userId') || 'guest-user';
+
+      // Procesar pago con Webpay
+      await processWebpayPayment({
+        amount: total,
+        userId: userId
+      });
+
+      // Nota: La redirección ocurre automáticamente en processWebpayPayment
+      // El usuario será redirigido a Webpay para completar el pago
+
+    } catch (error) {
+      console.error('Error al procesar el pago:', error);
+      setPaymentError(error.message || 'Error al procesar el pago. Por favor, intenta nuevamente.');
       setIsProcessing(false);
-    }, 2000);
+    }
   };
 
   const handleInputChange = (e) => {
@@ -226,6 +227,13 @@ function Checkout() {
                     </div>
                   </div>
 
+                  {/* Mensaje de error de pago */}
+                  {paymentError && (
+                    <Alert variant="danger" className="mt-3" onClose={() => setPaymentError(null)} dismissible>
+                      ❌ {paymentError}
+                    </Alert>
+                  )}
+
                   {/* Botón de pago */}
                   <Button 
                     type="submit" 
@@ -237,16 +245,17 @@ function Checkout() {
                     {isProcessing ? (
                       <>
                         <span className="spinner-border spinner-border-sm me-2" />
-                        Procesando...
+                        Procesando pago con Webpay...
                       </>
                     ) : (
-                      <>Completar Compra - ${total.toLocaleString()}</>
+                      <>Pagar con Webpay - ${total.toLocaleString()}</>
                     )}
                   </Button>
 
                   <div className="security-badges mt-3">
                     <Badge bg="success">🔒 Pago Seguro</Badge>
-                    <Badge bg="info">✓ Garantía</Badge>
+                    <Badge bg="info">✓ Webpay</Badge>
+                    <Badge bg="secondary">💳 Transbank</Badge>
                   </div>
                 </Card.Body>
               </Card>
